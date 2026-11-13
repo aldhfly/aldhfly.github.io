@@ -24,7 +24,7 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.75;
-      padding: 24px 16px 64px;
+      padding: 20px 14px 64px;
     }
     .container {
       max-width: 900px;
@@ -34,26 +34,27 @@
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       border: 2px solid var(--accent);
       border-radius: 18px;
-      padding: 28px 24px;
+      padding: 26px 20px;
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
     }
     .header-card h1 {
-      font-size: 1.8rem;
+      font-size: clamp(1.35rem, 4.5vw, 1.85rem);
       color: var(--accent);
       margin-bottom: 8px;
     }
     .header-card p {
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
     }
-    .badge-row {
+    .badge-row, .lang-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
-      margin-top: 16px;
+      margin-top: 14px;
     }
     .badge {
       background: rgba(16, 185, 129, 0.15);
@@ -61,15 +62,31 @@
       color: #6ee7b7;
       padding: 4px 14px;
       border-radius: 999px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
+    }
+    .lang-btn {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-btn.active, .lang-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(250, 204, 21, 0.12);
     }
     .policy-section {
       background-color: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 28px 24px;
-      margin-bottom: 28px;
+      padding: 26px 22px;
+      margin-bottom: 24px;
     }
     .policy-section.ltr {
       direction: ltr;
@@ -77,14 +94,14 @@
     }
     h2 {
       color: var(--accent);
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       margin-bottom: 14px;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--border);
     }
     h3 {
       color: #38bdf8;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       margin: 18px 0 8px;
     }
     p, li {
@@ -105,13 +122,15 @@
       padding: 2px 8px;
       border-radius: 6px;
       font-family: monospace;
-      font-size: 0.9em;
+      font-size: 0.88em;
+      direction: ltr;
+      display: inline-block;
     }
     .footer {
       text-align: center;
-      color: #64748b;
-      font-size: 0.9rem;
-      margin-top: 32px;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      margin-top: 28px;
     }
   </style>
 </head>
@@ -119,129 +138,164 @@
   <div class="container">
     <header class="header-card">
       <h1>🚂 سياسة الخصوصية | Privacy Policy</h1>
-      <p><strong>قطار الأحلام: ألغاز المحطات (Dream Express: Puzzle Tracks)</strong></p>
+      <p><strong>قطار الأحلام: ألغاز المحطات (Dream Express: Puzzle Tracks) — V7.0</strong></p>
       <p>المطور والناشر (Developer &amp; Publisher): <span class="code-pill">ALDHFLY (ALDHFLY GAMES)</span></p>
-      <p>اسم الحزمة (Package Name): <span class="code-pill">com.dreamexpress.puzzletracks</span></p>
+      <p>معرّف الحزمة الرسمي (Package ID): <span class="code-pill">com.dreamexpress.puzzletracks</span></p>
       <div class="badge-row">
-        <span class="badge">تاريخ السريان / Effective Date: 2026-11-02</span>
-        <span class="badge">متوافق مع Google Play &amp; Google AdMob</span>
-        <span class="badge">عائلي وآمن (Family Friendly)</span>
+        <span class="badge">تاريخ التحديث / Last Updated: 2026-11-12</span>
+        <span class="badge">Google Play &amp; AdMob &amp; UMP v3.1.0</span>
+        <span class="badge">آمن للعائلة (Family Friendly)</span>
+      </div>
+      <div class="lang-bar">
+        <button type="button" class="lang-btn active" onclick="setLangFilter('both', this)">العربية + English</button>
+        <button type="button" class="lang-btn" onclick="setLangFilter('ar', this)">العربية فقط</button>
+        <button type="button" class="lang-btn" onclick="setLangFilter('en', this)">English Only</button>
       </div>
     </header>
 
     <!-- ==================== القسم الأول: النسخة العربية ==================== -->
-    <section class="policy-section" lang="ar" dir="rtl">
+    <section id="sec-ar" class="policy-section" lang="ar" dir="rtl">
       <h2>أولاً: سياسة الخصوصية (باللغة العربية)</h2>
       <p>
-        مرحباً بك في لعبة <strong>«قطار الأحلام: ألغاز المحطات» (Dream Express: Puzzle Tracks)</strong>. نحن نحترم خصوصيتك ويلتزم استوديو التطوير بحماية بيانات جميع اللاعبين وفقاً لسياسات متجر <strong>Google Play</strong> وقوانين حماية البيانات العالمية (بما في ذلك GDPR و CCPA). توضح هذه الوثيقة كيفية تعامل اللعبة مع البيانات عند تثبيتها واستخدامها.
+        مرحباً بك في لعبة <strong>«قطار الأحلام: ألغاز المحطات» (Dream Express: Puzzle Tracks)</strong>، المقدمة من استوديو <strong>ALDHFLY (ALDHFLY GAMES)</strong> تحت الحزمة الرسمية <span class="code-pill">com.dreamexpress.puzzletracks</span>. نحن نحترم خصوصيتك ونلتزم بحماية بيانات جميع اللاعبين وفقاً لسياسات متجر <strong>Google Play</strong> وقوانين حماية البيانات العالمية (بما في ذلك اللائحة الأوروبية العامة لحماية البيانات GDPR، وقانون خصوصية المستهلك في كاليفورنيا CCPA، ونظام حماية البيانات الشخصية السعودي PDPL).
       </p>
 
-      <h3>1. البيانات التي تحفظها اللعبة محلياً (Local Game Progress)</h3>
+      <h3>1. البيانات التي تحفظها اللعبة محلياً وعدم جمع بيانات شخصية</h3>
       <ul>
-        <li>لا تطلب اللعبة إنشاء حساب مستخدم، ولا تجمع أو تطلب أي معلومات شخصية مباشرة مثل الاسم، البريد الإلكتروني، رقم الهاتف، الصور، أو جهات الاتصال.</li>
-        <li>يتم حفظ تقدمك في المراحل، وعدد النجوم (شرارات الأمل)، والعملات الذهبية، ومظاهر القطار محلياً على جهازك فقط باستخدام التخزين المحلي (<span class="code-pill">localStorage</span> تحت المفتاح <span class="code-pill">dream_express_save_v1</span>).</li>
-        <li>يمكنك مسح هذه البيانات في أي وقت من خلال إعدادات هاتفك (مسح بيانات التطبيق / Clear App Data) أو بإلغاء تثبيت اللعبة.</li>
+        <li>لا تطلب اللعبة إنشاء حساب مستخدم، ولا تجمع أو تخزن على خوادم خارجية أي معلومات تعريف شخصية مباشرة (PII) مثل الاسم، البريد الإلكتروني، رقم الهاتف، الصور، الموقع الجغرافي الدقيق (GPS)، أو جهات الاتصال.</li>
+        <li>يتم حفظ تقدمك في المراحل الـ 100، والنجوم الذهبية، والعملات، وترقيات القاطرات محلياً على جهازك فقط عبر التخزين المحلي (<span class="code-pill">localStorage</span> تحت المفتاح <span class="code-pill">dream_express_save_v70_public</span>).</li>
+        <li>يمكنك مسح هذه البيانات بالكامل في أي وقت من خلال إعدادات هاتفك (مسح بيانات التطبيق / Clear App Data) أو بإلغاء تثبيت اللعبة.</li>
       </ul>
 
-      <h3>2. الإعلانات وخدمات الطرف الثالث (Google AdMob)</h3>
+      <h3>2. الإعلانات وإدارة الموافقة (Google AdMob &amp; Google UMP SDK)</h3>
       <p>
-        تعتمد اللعبة على شبكة إعلانات <strong>Google AdMob (Google Mobile Ads SDK)</strong> لعرض إعلانات البانر السفلية، والإعلانات البينية بين الفصول، وإعلانات الفيديو الاختيارية بمكافأة (مثل الحصول على «تلميح أمل الذكي»، أو «+3 حركات إضافية»، أو «مضاعفة العملات ×2»).
+        تعتمد اللعبة على شبكة إعلانات <strong>Google AdMob (Google Mobile Ads SDK)</strong> لعرض إعلانات البانر السفلية، والإعلانات البينية المعتدلة بعد إتمام المراحل، وإعلانات الفيديو الاختيارية بمكافأة (مثل الرادار الذكي، الحركات أو الثواني الإضافية، ومضاعفة العملات).
+      </p>
+      <p>
+        كما تدمج اللعبة رسمياً حزمة <strong>Google User Messaging Platform (UMP SDK v3.1.0)</strong> لعرض نموذج الموافقة المعتمد (GDPR / IAB TCF) للمستخدمين في المنطقة الاقتصادية الأوروبية (EEA) والمملكة المتحدة وسويسرا قبل تهيئة الإعلانات المخصصة.
       </p>
       <p>قد تقوم حزمة Google AdMob بجمع ومعالجة بعض البيانات التقنية تلقائياً لغرض عرض الإعلانات، قياس أدائها، ومنع الاحتيال، وتشمل:</p>
       <ul>
-        <li><strong>معرّف الإعلانات في أندرويد (Advertising ID / <span class="code-pill">com.google.android.gms.permission.AD_ID</span>):</strong> معرّف فريد قابل لإعادة الضبط من إعدادات جهازك.</li>
-        <li><strong>الموقع التقريبي (Approximate Location):</strong> يُستنتج من عنوان بروتوكول الإنترنت (IP Address) لتقديم إعلانات مناسبة لمنطقتك الجغرافية (لا تطلب اللعبة صلاحية GPS الدقيقة أبداً).</li>
-        <li><strong>بيانات تفاعل التطبيق والتشخيص (App Interactions &amp; Diagnostics):</strong> مثل مرات ظهور الإعلان، النقرات، ومعلومات استقرار التطبيق.</li>
+        <li><strong>معرّف الإعلانات في أندرويد (<span class="code-pill">com.google.android.gms.permission.AD_ID</span>):</strong> معرّف فريد قابل لإعادة الضبط أو الحذف من إعدادات جهازك في أي وقت.</li>
+        <li><strong>الموقع التقريبي (Approximate Location):</strong> يُستنتج من عنوان بروتوكول الإنترنت (IP Address) فقط لتقديم إعلانات مناسبة لمنطقتك الجغرافية وتطبيق لوائح الخصوصية الإقليمية.</li>
+        <li><strong>بيانات تفاعل التطبيق والتشخيص (App Interactions &amp; Diagnostics):</strong> مثل مرات ظهور الإعلان، النقرات، وبيانات استقرار وأداء حزمة الإعلانات.</li>
       </ul>
       <p>
-        تتم معالجة جميع البيانات المرسلة إلى حزمة Google AdMob عبر اتصالات مشفّرة بالكامل أثناء النقل (HTTPS/TLS). لمزيد من التفاصيل حول كيفية استخدام Google للبيانات، يرجى مراجعة:
+        تتم معالجة جميع البيانات المرسلة عبر اتصالات مشفّرة بالكامل أثناء النقل (HTTPS/TLS). لمزيد من التفاصيل حول كيفية معالجة Google للبيانات، يرجى مراجعة:
         <br />
-        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">سياسة خصوصية Google (Google Privacy Policy)</a> و
-        <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">كيف تستخدم Google المعلومات من المواقع أو التطبيقات التي تستخدم خدماتها</a>.
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">سياسة خصوصية Google</a> و
+        <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">كيف تستخدم Google المعلومات من التطبيقات التي تستخدم خدماتها</a>.
       </p>
 
-      <h3>3. عمليات الشراء داخل التطبيق (Google Play Billing)</h3>
+      <h3>3. عمليات الشراء داخل التطبيق (Google Play Billing v8.0.0)</h3>
       <p>
-        تتم معالجة عمليات الشراء الاختيارية داخل التطبيق (مثل <strong>ترخيص القيادة القصوى VIP — <span class="code-pill">vip_overdrive_pass</span></strong> لإزالة الإعلانات) حصرياً وبأمان تام عبر نظام الدفع الرسمي <strong>Google Play Billing Library</strong>، ولا تطلع اللعبة أو تحتفظ بأي بيانات مالية أو بطاقات ائتمانية خاصة بك، مع إتاحة زر «استعادة المشتريات» داخل المتجر في أي وقت.
+        تتم معالجة عمليات الشراء الاختيارية داخل التطبيق حصرياً وبأمان تام عبر نظام الدفع الرسمي <strong>Google Play Billing Library v8.0.0</strong>، وتشمل المنتجات الرسمية المعتمدة:
       </p>
-
-      <h3>4. التحكم في الإعلانات ومعرّف الإعلانات (Opt-Out &amp; Controls)</h3>
       <ul>
-        <li>يمكنك في أي وقت إعادة تعيين معرّف الإعلانات أو إيقاف تخصيص الإعلانات من جهاز الأندرويد عبر الانتقال إلى: <strong>الإعدادات &gt; Google &gt; الإعلانات (Settings &gt; Google &gt; Ads)</strong>.</li>
-        <li>كما تتيح اللعبة خيار فتح <strong>باقة الدرجة الأولى (Overdrive VIP Pass)</strong> داخل المتجر لإيقاف الإعلانات البينية وإعلان البانر السفلي.</li>
+        <li><strong>باقة VIP وإزالة الإعلانات (<span class="code-pill">vip_no_ads_pack</span>):</strong> منتج دائم يُفعّل ميزة إزالة إعلانات البانر والإعلانات البينية ويمكن استعادته في أي وقت عبر زر «استعادة المشتريات».</li>
+        <li><strong>حفنة عملات ذهبية (<span class="code-pill">coins_pack_small</span> — 2,500 عملة)</strong> و<strong>خزنة الذهب الملكية (<span class="code-pill">coins_pack_mega</span> — 15,000 عملة):</strong> حزم عملات اختيارية قابلة للاستهلاك داخل اللعبة.</li>
+      </ul>
+      <p>لا تطلع اللعبة أو تحتفظ بأي أرقام بطاقات ائتمانية أو بيانات بنكية خاصة بك على الإطلاق.</p>
+
+      <h3>4. خيارات التحكم وإلغاء تخصيص الإعلانات</h3>
+      <ul>
+        <li>يمكنك في أي وقت إعادة تعيين معرّف الإعلانات أو إيقاف تخصيص الإعلانات على جهاز الأندرويد عبر: <strong>الإعدادات &gt; Google &gt; الإعلانات (Settings &gt; Google &gt; Ads)</strong>.</li>
+        <li>تعمل اللعبة بالكامل في وضع عدم الاتصال بالإنترنت (100% Offline Mode) مع خطوط وأصول مدمجة محلياً دون الحاجة لاتصال شبكي مستمر.</li>
       </ul>
 
-      <h3>5. خصوصية الأطفال والعائلة (Children’s Privacy)</h3>
+      <h3>5. خصوصية الأطفال والعائلة</h3>
       <p>
-        صُممت لعبة «قطار الأحلام: ألغاز المحطات» لتكون لعبة ألغاز منطقية آمنة ومناسبة لجميع أفراد العائلة. نحن لا نجمع عن قصد أي بيانات تعريف شخصية (PII) من الأطفال أو البالغين. إذا كنت ولي أمر وتعتقد أنه تم تقديم أي معلومات شخصية عن طريق الخطأ، يرجى التواصل معنا لحذفها فوراً.
+        صُممت لعبة «قطار الأحلام: ألغاز المحطات» لتكون لعبة ألغاز هندسية آمنة ومناسبة لجميع أفراد العائلة، ولا نجمع عن قصد أي بيانات تعريف شخصية من الأطفال أو البالغين.
       </p>
 
-      <h3>6. المطور والتعديلات والتواصل معنا (Developer &amp; Contact Us)</h3>
+      <h3>6. التواصل مع المطور</h3>
       <p>
-        اسم المطور والناشر المعتمد (Developer / Publisher Name): <strong>ALDHFLY (ALDHFLY GAMES)</strong>.<br />
-        قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر لتواكب تحديثات المتجر. لأي استفسارات تتعلق بالخصوصية، يمكنك التواصل مع فريق التطوير عبر البريد الإلكتروني المعتمد في حساب <strong>Google Play Console</strong>:
+        المطور والناشر: <strong>ALDHFLY (ALDHFLY GAMES)</strong>.<br />
+        لأي استفسارات أو طلبات تتعلق بسياسة الخصوصية، يسعدنا تواصلكم عبر البريد الإلكتروني الرسمي المعتمد في متجر Google Play:
         <span class="code-pill">aldhfly@gmail.com</span>.
       </p>
     </section>
 
-    <!-- ==================== القسم الثاني: النسخة الإنجليزية ==================== -->
-    <section class="policy-section ltr" lang="en" dir="ltr">
+    <!-- ==================== Part 2: English Version ==================== -->
+    <section id="sec-en" class="policy-section ltr" lang="en" dir="ltr">
       <h2>Part 2: Privacy Policy (English Version)</h2>
       <p>
-        Welcome to <strong>Dream Express: Puzzle Tracks (قطار الأحلام: ألغاز المحطات)</strong>, developed and published by <strong>ALDHFLY (ALDHFLY GAMES)</strong>, package ID <span class="code-pill">com.dreamexpress.puzzletracks</span>. We respect your privacy and are committed to protecting it in full compliance with Google Play Developer Program Policies, GDPR, and CCPA. This Privacy Policy explains how information is handled when you install and play our game.
+        Welcome to <strong>Dream Express: Puzzle Tracks (قطار الأحلام: ألغاز المحطات)</strong>, developed and published by <strong>ALDHFLY (ALDHFLY GAMES)</strong> under the official Android package ID <span class="code-pill">com.dreamexpress.puzzletracks</span>. We respect your privacy and are committed to protecting it in full compliance with Google Play Developer Program Policies, GDPR, UK GDPR, CCPA, and applicable data protection regulations.
       </p>
 
-      <h3>1. Local Game Data &amp; Zero Personal Account Collection</h3>
+      <h3>1. Local Game Progress &amp; Zero Personal Account Collection</h3>
       <ul>
-        <li>We do <strong>not</strong> require user registration, and we do <strong>not</strong> directly collect, store, or transmit any Personally Identifiable Information (PII) such as your name, email address, phone number, photos, or contacts.</li>
-        <li>All gameplay progress, stars earned (Sparks of Hope), coins, and unlocked train skins are stored strictly locally on your device using standard WebView LocalStorage (<span class="code-pill">dream_express_save_v1</span>).</li>
-        <li>You can delete all local save data at any time by clearing the app data in your Android system settings or uninstalling the application.</li>
+        <li>We do <strong>not</strong> require user registration or sign-in, and we do <strong>not</strong> directly collect, store, or transmit any Personally Identifiable Information (PII) such as your name, email address, phone number, photos, precise GPS location, or contacts.</li>
+        <li>All 100-level campaign progress, Golden Stars, coins, and locomotive upgrades are stored strictly locally on your device via standard WebView LocalStorage (<span class="code-pill">dream_express_save_v70_public</span>).</li>
+        <li>You can erase all local game data at any time by clearing the app storage in your Android settings or uninstalling the game.</li>
       </ul>
 
-      <h3>2. Third-Party Advertising Services (Google AdMob)</h3>
+      <h3>2. Advertising &amp; Consent Management (Google AdMob &amp; Google UMP SDK)</h3>
       <p>
-        Our game integrates the official <strong>Google Mobile Ads SDK (Google AdMob)</strong> to display bottom adaptive banners, occasional interstitial ads between chapters, and optional user-initiated Rewarded Video Ads (e.g., for Smart Hints, +3 Extra Moves, or 2x Victory Coins).
+        Our game integrates the official <strong>Google Mobile Ads SDK (Google AdMob)</strong> to display bottom banners, paced interstitial ads after completed missions, and optional user-initiated Rewarded Video Ads (e.g., for Smart Radar Hints, Extra Rescue Moves/Time, or 2x Coin Rewards).
       </p>
-      <p>To serve ads, measure ad performance, and prevent fraud, the Google AdMob SDK may automatically collect and process certain device and interaction data, including:</p>
+      <p>
+        For players in the European Economic Area (EEA), the United Kingdom, and Switzerland, our app integrates the official <strong>Google User Messaging Platform (UMP SDK v3.1.0)</strong> to request and manage GDPR / IAB TCF consent prior to initializing personalized advertising.
+      </p>
+      <p>To serve ads, measure performance, and prevent fraud, the Google AdMob SDK may automatically collect and process limited technical data, including:</p>
       <ul>
-        <li><strong>Device &amp; Advertising Identifiers (<span class="code-pill">com.google.android.gms.permission.AD_ID</span>):</strong> Your resettable Android Advertising ID.</li>
-        <li><strong>Approximate Location:</strong> Inferred solely from your IP address for regional ad relevance and compliance (the game never requests fine GPS location permissions).</li>
-        <li><strong>App Interactions &amp; Diagnostics:</strong> Ad impressions, ad clicks, crash logs, and performance telemetry related to ad rendering.</li>
+        <li><strong>Advertising Identifier (<span class="code-pill">com.google.android.gms.permission.AD_ID</span>):</strong> Your resettable Android Advertising ID.</li>
+        <li><strong>Approximate Location:</strong> Inferred solely from IP address for regional ad relevance and regulatory compliance (fine GPS location is never requested).</li>
+        <li><strong>App Interactions &amp; Diagnostics:</strong> Ad impressions, ad clicks, crash diagnostics, and SDK performance telemetry.</li>
       </ul>
       <p>
-        All data transmitted by the Google Mobile Ads SDK is encrypted in transit using industry-standard TLS/HTTPS. To learn more about how Google processes data, please visit:
+        All data transmitted by the Google Mobile Ads SDK is encrypted in transit via HTTPS/TLS. Learn more at:
         <br />
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> and
         <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">How Google uses information from sites or apps that use our services</a>.
       </p>
 
-      <h3>3. In-App Purchases (Google Play Billing)</h3>
+      <h3>3. In-App Purchases (Google Play Billing v8.0.0)</h3>
       <p>
-        Optional in-app purchases (such as the <strong>Overdrive VIP Pass — <span class="code-pill">vip_overdrive_pass</span></strong> to remove ads) are processed securely and exclusively by the official <strong>Google Play Billing Library</strong>. We never access, collect, or store any credit card or payment information, and players can restore their purchases at any time via the in-shop "Restore Purchases" button.
+        Optional in-app purchases are processed securely and exclusively through the official <strong>Google Play Billing Library v8.0.0</strong>, covering:
       </p>
-
-      <h3>4. Your Choices &amp; Data Controls</h3>
       <ul>
-        <li>You can reset your Android Advertising ID or opt out of personalized advertising at any time on your Android device via <strong>Settings &gt; Google &gt; Ads</strong>.</li>
-        <li>Because we do not maintain any external user database, clearing the app storage or resetting your Advertising ID immediately removes your local state and ad identifier linkage.</li>
+        <li><strong>VIP &amp; Remove Ads Pass (<span class="code-pill">vip_no_ads_pack</span>):</strong> Non-consumable entitlement removing banner and interstitial ads, restorable at any time via the in-game "Restore Purchases" button.</li>
+        <li><strong>Gold Coin Bundles (<span class="code-pill">coins_pack_small</span> — 2,500 Coins &amp; <span class="code-pill">coins_pack_mega</span> — 15,000 Coins):</strong> Optional consumable in-game currency packs.</li>
+      </ul>
+      <p>We never access, process, or store your credit card, billing address, or financial credentials.</p>
+
+      <h3>4. User Controls, Offline Play &amp; Opt-Out</h3>
+      <ul>
+        <li>You can reset or delete your Android Advertising ID or opt out of personalized ads at any time on your Android device via <strong>Settings &gt; Google &gt; Ads</strong>.</li>
+        <li>The game bundles all 3D models, fonts, and levels locally for 100% offline play without requiring an active internet connection.</li>
       </ul>
 
       <h3>5. Children’s Privacy</h3>
       <p>
-        Dream Express: Puzzle Tracks is a family-friendly logic puzzle game. We do not knowingly collect any personal information from children under 13 (or the applicable age in your jurisdiction). If you are a parent or guardian and have any concerns, please contact us directly.
+        Dream Express: Puzzle Tracks is a family-friendly logic puzzle game. We do not knowingly collect any personal information from children or adults. If you are a parent or guardian with any questions, please contact us directly.
       </p>
 
-      <h3>6. Developer / Publisher &amp; Contact Information</h3>
+      <h3>6. Developer &amp; Contact Information</h3>
       <p>
-        Developer / Publisher Name: <strong>ALDHFLY (ALDHFLY GAMES)</strong>.<br />
-        We may update this Privacy Policy periodically to reflect changes in legal or store requirements. For any questions or requests regarding this Privacy Policy, please contact us via the developer support email listed on our official Google Play Store page:
+        Developer / Publisher: <strong>ALDHFLY (ALDHFLY GAMES)</strong>.<br />
+        For any privacy inquiries or support requests, please contact us at our official Google Play developer email:
         <span class="code-pill">aldhfly@gmail.com</span>.
       </p>
     </section>
 
     <footer class="footer">
-      &copy; 2026 ALDHFLY (ALDHFLY GAMES) — Dream Express Studio (قطار الأحلام: ألغاز المحطات). All Rights Reserved.
+      &copy; 2026 ALDHFLY (ALDHFLY GAMES) — Dream Express: Puzzle Tracks (قطار الأحلام: ألغاز المحطات). All Rights Reserved.
     </footer>
   </div>
+
+  <script>
+    function setLangFilter(mode, btn) {
+      var ar = document.getElementById('sec-ar');
+      var en = document.getElementById('sec-en');
+      if (ar) ar.style.display = (mode === 'en') ? 'none' : 'block';
+      if (en) en.style.display = (mode === 'ar') ? 'none' : 'block';
+      var btns = document.querySelectorAll('.lang-btn');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.remove('active');
+      }
+      if (btn) btn.classList.add('active');
+    }
+  </script>
 </body>
 </html>
