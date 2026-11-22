@@ -1,30 +1,603 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALDHFLY GAMES — قطار الأحلام: ألغاز المحطات (Dream Express 3D)</title>
-<style>
-  body { margin:0; font-family: system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #0b162c, #1c2e4a); color: #fff; text-align: center; padding: 60px 20px; }
-  .card { max-width: 680px; margin: 0 auto; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,215,0,0.35); border-radius: 20px; padding: 40px 28px; backdrop-filter: blur(12px); }
-  h1 { color: #ffd700; margin-bottom: 10px; font-size: 2rem; }
-  p { color: #dbe7ff; line-height: 1.7; font-size: 1.05rem; }
-  .links { margin-top: 28px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  a.btn { display: inline-block; padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 700; background: #ffd700; color: #0b162c; }
-  a.sec { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قطار الأحلام: ألغاز القطارات | Dream Express: 3D Train Puzzle — ALDHFLY GAMES</title>
+  <meta name="description" content="حمّل لعبة قطار الأحلام: ألغاز القطارات (Dream Express 3D) مجاناً على Google Play! 100 مهمة ثلاثية الأبعاد، 9 قاطرات عالمية شهيرة، تحدي القطارين المتزامنين، وتعمل 100% بدون إنترنت بـ 8 لغات.">
+  <meta name="keywords" content="قطار الأحلام, ألغاز القطارات, لعبة قطارات 3D, ألعاب بدون نت, Dream Express 3D, 3D Train Puzzle, Railway Puzzle Game, Offline Puzzle Game, ALDHFLY GAMES">
+  <link rel="canonical" href="https://aldhfly.github.io/">
+
+  <!-- Open Graph / WhatsApp / Telegram / Facebook Rich Social Card -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ALDHFLY GAMES">
+  <meta property="og:url" content="https://aldhfly.github.io/">
+  <meta property="og:title" content="🚄 قطار الأحلام 3D | هل تقدر توصل المسار قبل انطلاق القطار؟">
+  <meta property="og:description" content="100 مهمة ألغاز ثلاثية الأبعاد • 9 قاطرات عالمية خارقة • تحدي القطارين المتزامنين • مجاناً وبدون إنترنت على Google Play!">
+  <meta property="og:image" content="https://aldhfly.github.io/assets/og-dream-express.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ar_SA">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- X (Twitter) Large Summary Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="🚄 Dream Express 3D — قطار الأحلام: ألغاز القطارات">
+  <meta name="twitter:description" content="100 Handcrafted 3D Railway Puzzles • 9 Iconic World Trains • Dual-Train Missions • 100% Offline on Google Play!">
+  <meta name="twitter:image" content="https://aldhfly.github.io/assets/og-dream-express.jpg">
+
+  <!-- Google Search Rich Snippet (SoftwareApplication / VideoGame) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["VideoGame", "MobileApplication"],
+    "name": "قطار الأحلام: ألغاز القطارات — Dream Express: 3D Train Puzzle",
+    "operatingSystem": "Android",
+    "applicationCategory": "GameApplication",
+    "genre": ["Puzzle", "Simulation", "Strategy"],
+    "inLanguage": ["ar", "en", "ja", "ko", "de", "fr", "es", "pt"],
+    "url": "https://aldhfly.github.io/",
+    "installUrl": "https://play.google.com/store/apps/details?id=com.dreamexpress.puzzletracks",
+    "image": "https://aldhfly.github.io/assets/og-dream-express.jpg",
+    "author": {
+      "@type": "Organization",
+      "name": "ALDHFLY GAMES",
+      "url": "https://aldhfly.github.io/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-deep: #050b18;
+      --bg-card: rgba(15, 23, 42, 0.86);
+      --border-subtle: rgba(148, 163, 184, 0.22);
+      --gold: #fbbf24;
+      --emerald: #10b981;
+      --cyan: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100dvh;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(circle at 50% 0%, #102a4c 0%, var(--bg-deep) 58%, #030712 100%);
+      color: var(--text-main);
+      line-height: 1.55;
+      text-align: start;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1140px, 100% - 2rem);
+      margin-inline: auto;
+    }
+
+    /* Top Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(5, 11, 24, 0.9);
+      border-bottom: 1px solid var(--border-subtle);
+      padding-block: 0.75rem;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-dot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.2rem 0.55rem;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, var(--gold), #f59e0b);
+      color: #0f172a;
+      font-weight: 900;
+      font-size: 0.85rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-block-size: 2.75rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-lang {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .btn-play {
+      background: linear-gradient(135deg, var(--emerald), #059669);
+      border-color: #6ee7b7;
+      color: #ffffff;
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+    }
+
+    .btn-share {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: rgba(56, 189, 248, 0.55);
+      color: #e0f2fe;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding-block: clamp(2rem, 4vw, 3.75rem);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      min-block-size: 2rem;
+      padding: 0.25rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(251, 191, 36, 0.14);
+      border: 1px solid rgba(251, 191, 36, 0.55);
+      color: var(--gold);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 1.15rem + 2.4vw, 3rem);
+      line-height: 1.2;
+      font-weight: 900;
+      text-wrap: balance;
+    }
+
+    .hero-lead {
+      font-size: clamp(1rem, 0.92rem + 0.35vw, 1.18rem);
+      color: var(--text-muted);
+      max-width: 60ch;
+      text-wrap: pretty;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.35rem;
+    }
+
+    .btn-hero-lg {
+      min-block-size: 3.35rem;
+      padding: 0.75rem 1.65rem;
+      font-size: 1.05rem;
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+      gap: 0.75rem;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1rem;
+      padding: 0.75rem 0.9rem;
+      min-block-size: 4.5rem;
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .stat-box span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-visual {
+      border-radius: 1.35rem;
+      overflow: hidden;
+      border: 2px solid rgba(251, 191, 36, 0.45);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.65);
+      background: #091326;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1200 / 630;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Sections */
+    .section {
+      padding-block: clamp(2rem, 4vw, 3.5rem);
+      border-top: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .section-head {
+      margin-bottom: 1.6rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.4rem, 1.05rem + 1.4vw, 2.15rem);
+      font-weight: 900;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      max-width: 62ch;
+      margin-top: 0.4rem;
+      text-wrap: pretty;
+    }
+
+    /* Container-query Feature Grid */
+    .features-wrap {
+      container-type: inline-size;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @container (min-width: 38rem) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @container (min-width: 58rem) {
+      .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.15rem;
+      padding: 1.2rem;
+      min-block-size: 9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--cyan);
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      text-wrap: pretty;
+    }
+
+    /* Screenshots Gallery */
+    .shots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+      gap: 1rem;
+    }
+
+    .shot-card {
+      border-radius: 1.1rem;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #09111f;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .shot-card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Video Trailer */
+    .video-frame {
+      max-width: 52rem;
+      margin-inline: auto;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 2px solid var(--border-subtle);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Footer */
+    .footer {
+      padding-block: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .footer-links a {
+      color: var(--cyan);
+      overflow-wrap: anywhere;
+    }
+
+    [data-lang-block="en"] {
+      display: none;
+    }
+
+    html[lang="en"] [data-lang-block="ar"] {
+      display: none;
+    }
+
+    html[lang="en"] [data-lang-block="en"] {
+      display: revert;
+    }
+  </style>
 </head>
 <body>
-  <div class="card">
-    <h1>🚂 ALDHFLY GAMES</h1>
-    <h2>قطار الأحلام: ألغاز المحطات — Dream Express 3D</h2>
-    <p>استوديو تطوير الألعاب ثلاثية الأبعاد للهواتف الذكية. مغامرة ألغاز القطارات الاستراتيجية عبر 100 مرحلة و10 عوالم ثلاثية الأبعاد.</p>
-    <div class="links">
-      <a class="btn" href="https://play.google.com/store/apps/details?id=com.dreamexpress.puzzletracks">Google Play</a>
-      <a class="btn sec" href="/privacy_policy.html">سياسة الخصوصية / Privacy Policy</a>
-      <a class="btn sec" href="/app-ads.txt">app-ads.txt (AdMob)</a>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span class="brand-dot">3D</span>
+        <span>ALDHFLY GAMES</span>
+      </div>
+      <div class="nav-actions">
+        <button id="lang-toggle" type="button" class="btn btn-lang" aria-label="Switch Language">
+          <span data-lang-block="ar">🌐 English</span>
+          <span data-lang-block="en">🌐 العربية</span>
+        </button>
+        <a class="btn btn-play" href="https://play.google.com/store/apps/details?id=com.dreamexpress.puzzletracks" target="_blank" rel="noopener">
+          <span data-lang-block="ar">▶ حمّل من Google Play</span>
+          <span data-lang-block="en">▶ Get it on Google Play</span>
+        </a>
+      </div>
     </div>
-    <p style="margin-top:28px;font-size:0.9rem;opacity:0.75;">التواصل الرسمي: aldhfly@gmail.com</p>
-  </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">
+          <span data-lang-block="ar">⭐ متوفرة الآن مجاناً في ١٧٨ دولة</span>
+          <span data-lang-block="en">⭐ Out Now Worldwide — Free on Android</span>
+        </span>
+
+        <h1 data-lang-block="ar">قطار الأحلام: ألغاز القطارات ثلاثية الأبعاد</h1>
+        <h1 data-lang-block="en">Dream Express: 3D Train Puzzle</h1>
+
+        <p class="hero-lead" data-lang-block="ar">
+          دوّر السكك الحديدية ثلاثية الأبعاد، واجمع النجوم الذهبية الثلاث، ووجّه ٩ قاطرات عالمية شهيرة عبر ١٠ عوالم خلابة من الوديان الخضراء إلى قمم الألب الثلجية والمدن الليلية — تعمل بالكامل بدون إنترنت!
+        </p>
+        <p class="hero-lead" data-lang-block="en">
+          Rotate handcrafted 3D railway tracks, collect all 3 golden stars, and command 9 iconic world locomotives across 10 stunning biomes from emerald valleys to snowy alpine bridges — 100% playable offline!
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-play btn-hero-lg" href="https://play.google.com/store/apps/details?id=com.dreamexpress.puzzletracks" target="_blank" rel="noopener">
+            <span data-lang-block="ar">🚄 حمّل اللعبة مجاناً من Google Play</span>
+            <span data-lang-block="en">🚄 Download FREE on Google Play</span>
+          </a>
+          <a class="btn btn-share btn-hero-lg" href="https://wa.me/?text=%D8%AC%D8%B1%D9%91%D8%A8%20%D9%84%D8%B9%D8%A8%D8%A9%20%D9%82%D8%B7%D8%A7%D8%B1%20%D8%A7%D9%84%D8%A3%D8%AD%D9%84%D8%A7%D9%85%203D%20%D9%85%D8%AC%D8%A7%D9%86%D8%A7%D9%8B%20%D8%B9%D9%84%D9%89%20Google%20Play%20%F0%9F%9A%84%E2%AD%90%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.dreamexpress.puzzletracks" target="_blank" rel="noopener">
+            <span data-lang-block="ar">📤 شارك عبر واتساب</span>
+            <span data-lang-block="en">📤 Share with Friends</span>
+          </a>
+        </div>
+
+        <div class="stats-strip">
+          <div class="stat-box">
+            <strong>100</strong>
+            <span data-lang-block="ar">مهمة 3D ذكية</span>
+            <span data-lang-block="en">3D Missions</span>
+          </div>
+          <div class="stat-box">
+            <strong>9</strong>
+            <span data-lang-block="ar">قاطرات عالمية</span>
+            <span data-lang-block="en">World Trains</span>
+          </div>
+          <div class="stat-box">
+            <strong>8</strong>
+            <span data-lang-block="ar">لغات مدعومة</span>
+            <span data-lang-block="en">Languages</span>
+          </div>
+          <div class="stat-box">
+            <strong>100%</strong>
+            <span data-lang-block="ar">بدون إنترنت</span>
+            <span data-lang-block="en">Offline Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img src="assets/og-dream-express.jpg" alt="Dream Express 3D — قطار الأحلام: ألغاز القطارات" width="1200" height="630" fetchpriority="high">
+      </div>
+    </section>
+
+    <section class="section features-wrap">
+      <div class="section-head">
+        <h2 data-lang-block="ar">لماذا يعشق اللاعبون «قطار الأحلام 3D»؟</h2>
+        <h2 data-lang-block="en">Why Players Love Dream Express 3D</h2>
+        <p data-lang-block="ar">تصميم هندسي ثلاثي الأبعاد بسرعة 60 إطاراً في الثانية وأصوات قطارات حقيقية مسجلة.</p>
+        <p data-lang-block="en">Crisp 60 FPS 3D railway dioramas paired with authentic studio-mastered locomotive acoustics.</p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <h3 data-lang-block="ar">🚆 تحدي القطارين المتزامنين</h3>
+          <h3 data-lang-block="en">🚆 Dual-Train Puzzles</h3>
+          <p data-lang-block="ar">وجّه قطارين ينطلقان معاً على نفس الشبكة بنظام إشارات ذكي يمنع التصادم.</p>
+          <p data-lang-block="en">Route two simultaneous express trains across shared junctions with zero collisions.</p>
+        </article>
+        <article class="feature-card">
+          <h3 data-lang-block="ar">🚄 ٩ قاطرات بقدرات فريدة</h3>
+          <h3 data-lang-block="en">🚄 9 Iconic Locomotives</h3>
+          <p data-lang-block="ar">من قطار الرصاصة الياباني (شينكانسن) إلى قطار الشرق والماجليف السيبراني مع ٥ ترقيات.</p>
+          <p data-lang-block="en">Unlock Shinkansen Bullet, Orient Express, Steam Titan, and Cyber Maglev with 5 upgrade tiers.</p>
+        </article>
+        <article class="feature-card">
+          <h3 data-lang-block="ar">♾️ تحدي اليوم والماراثون</h3>
+          <h3 data-lang-block="en">♾️ Daily & Endless Modes</h3>
+          <p data-lang-block="ar">تحدٍّ يومي عالمي بمكافأة ذهب ×3، وماراثون السكك اللانهائي، وإمبراطورية المحطة.</p>
+          <p data-lang-block="en">Compete in 3x Gold Daily Challenges, Endless Rail Marathon, and Station Empire progression.</p>
+        </article>
+        <article class="feature-card">
+          <h3 data-lang-block="ar">✈️ تعمل بدون إنترنت ١٠٠٪</h3>
+          <h3 data-lang-block="en">✈️ 100% Offline Play</h3>
+          <p data-lang-block="ar">استمتع بجميع المراحل الـ ١٠٠ في السفر والطائرة وفي أي مكان بدون الحاجة لشبكة.</p>
+          <p data-lang-block="en">Play all 100 campaign levels on flights, commutes, or anywhere with zero Wi-Fi required.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 data-lang-block="ar">لقطات حية من داخل اللعبة</h2>
+        <h2 data-lang-block="en">Live In-Game 3D Screenshots</h2>
+      </div>
+      <div class="shots-grid">
+        <div class="shot-card"><img src="assets/shot_ar_01.png" data-src-ar="assets/shot_ar_01.png" data-src-en="assets/shot_en_01.png" alt="Dream Express 3D Main Menu" width="1080" height="1920" loading="lazy"></div>
+        <div class="shot-card"><img src="assets/shot_ar_02.png" data-src-ar="assets/shot_ar_02.png" data-src-en="assets/shot_en_02.png" alt="Pine Valley 3D Railway Puzzle" width="1080" height="1920" loading="lazy"></div>
+        <div class="shot-card"><img src="assets/shot_ar_03.png" data-src-ar="assets/shot_ar_03.png" data-src-en="assets/shot_en_03.png" alt="Alpine Mountain Bridge Puzzle" width="1080" height="1920" loading="lazy"></div>
+        <div class="shot-card"><img src="assets/shot_ar_04.png" data-src-ar="assets/shot_ar_04.png" data-src-en="assets/shot_en_04.png" alt="Dual Trains Neon Metropolis" width="1080" height="1920" loading="lazy"></div>
+        <div class="shot-card"><img src="assets/shot_ar_05.png" data-src-ar="assets/shot_ar_05.png" data-src-en="assets/shot_en_05.png" alt="9 World Locomotives Garage" width="1080" height="1920" loading="lazy"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 data-lang-block="ar">العرض الرسمي للعبة</h2>
+        <h2 data-lang-block="en">Official Gameplay Trailer</h2>
+      </div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/bqbhpj02LqA?rel=0" title="Dream Express 3D Official Trailer" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 ALDHFLY GAMES. All rights reserved.</div>
+      <nav class="footer-links" aria-label="Footer Links">
+        <a href="https://play.google.com/store/apps/details?id=com.dreamexpress.puzzletracks" target="_blank" rel="noopener">Google Play</a>
+        <a href="privacy_policy.html">سياسة الخصوصية / Privacy Policy</a>
+        <a href="app-ads.txt">app-ads.txt</a>
+        <a href="mailto:aldhfly@gmail.com">aldhfly@gmail.com</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('lang-toggle');
+      function setLang(lg) {
+        var html = document.documentElement;
+        html.setAttribute('lang', lg);
+        html.setAttribute('dir', lg === 'ar' ? 'rtl' : 'ltr');
+        var imgs = document.querySelectorAll('img[data-src-ar]');
+        for (var i = 0; i < imgs.length; i++) {
+          imgs[i].src = lg === 'ar' ? imgs[i].getAttribute('data-src-ar') : imgs[i].getAttribute('data-src-en');
+        }
+      }
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('lang') === 'en') setLang('en');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          var next = document.documentElement.getAttribute('lang') === 'ar' ? 'en' : 'ar';
+          setLang(next);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
