@@ -7,6 +7,15 @@
   <meta name="description" content="حمّل لعبة قطار الأحلام: ألغاز القطارات (Dream Express 3D) مجاناً على Google Play! 100 مهمة ثلاثية الأبعاد، 9 قاطرات عالمية شهيرة، تحدي القطارين المتزامنين، وتعمل 100% بدون إنترنت بـ 8 لغات.">
   <meta name="keywords" content="قطار الأحلام, ألغاز القطارات, لعبة قطارات 3D, ألعاب بدون نت, Dream Express 3D, 3D Train Puzzle, Railway Puzzle Game, Offline Puzzle Game, ALDHFLY GAMES">
   <link rel="canonical" href="https://aldhfly.github.io/">
+  <link rel="alternate" hreflang="ar" href="https://aldhfly.github.io/">
+  <link rel="alternate" hreflang="en" href="https://aldhfly.github.io/?lang=en">
+  <link rel="alternate" hreflang="ja" href="https://aldhfly.github.io/?lang=ja">
+  <link rel="alternate" hreflang="ko" href="https://aldhfly.github.io/?lang=ko">
+  <link rel="alternate" hreflang="de" href="https://aldhfly.github.io/?lang=de">
+  <link rel="alternate" hreflang="fr" href="https://aldhfly.github.io/?lang=fr">
+  <link rel="alternate" hreflang="es" href="https://aldhfly.github.io/?lang=es">
+  <link rel="alternate" hreflang="pt" href="https://aldhfly.github.io/?lang=pt">
+  <link rel="alternate" hreflang="x-default" href="https://aldhfly.github.io/">
 
   <!-- Open Graph / WhatsApp / Telegram / Facebook Rich Social Card -->
   <meta property="og:type" content="website">
@@ -597,6 +606,85 @@
           setLang(next);
         });
       }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var L10N = {
+        ja: {
+          title: 'Dream Express: 3D立体列車パズル — ALDHFLY GAMES',
+          eyebrow: '⭐ 世界中で無料配信中 — Android対応',
+          h1: 'ドリーム・エクスプレス：3D列車パズル',
+          lead: '3Dの線路を回転させ、3つの金の星を集め、世界の有名列車9種を10の美しいステージで走らせよう — 完全オフライン対応！',
+          navPlay: '▶ Google Playで入手',
+          ctaPlay: '🚄 Google Playで無料ダウンロード',
+          ctaShare: '📤 友達にシェア'
+        },
+        ko: {
+          title: 'Dream Express: 3D 기차 퍼즐 — ALDHFLY GAMES',
+          eyebrow: '⭐ 전 세계 무료 출시 — Android 지원',
+          h1: '드림 익스프레스: 3D 기차 퍼즐',
+          lead: '3D 철로를 회전하고 3개의 황금 별을 모아 10개의 아름다운 월드에서 세계의 명물 열차 9종을 지휘하세요 — 100% 오프라인 플레이!',
+          navPlay: '▶ Google Play에서 받기',
+          ctaPlay: '🚄 Google Play에서 무료 다운로드',
+          ctaShare: '📤 친구와 공유하기'
+        },
+        de: {
+          title: 'Dream Express: 3D-Zug-Puzzle — ALDHFLY GAMES',
+          eyebrow: '⭐ Jetzt weltweit kostenlos — für Android',
+          h1: 'Dream Express: 3D-Zug-Puzzle',
+          lead: 'Drehe 3D-Gleise, sammle 3 goldene Sterne und steuere 9 berühmte Züge durch 10 beeindruckende Welten — komplett offline spielbar!',
+          navPlay: '▶ Bei Google Play laden',
+          ctaPlay: '🚄 Kostenlos bei Google Play laden',
+          ctaShare: '📤 Mit Freunden teilen'
+        },
+        fr: {
+          title: 'Dream Express : Puzzle Train 3D — ALDHFLY GAMES',
+          eyebrow: '⭐ Disponible gratuitement dans le monde entier — Android',
+          h1: 'Dream Express : Puzzle Train 3D',
+          lead: 'Faites pivoter les rails en 3D, collectez les 3 étoiles d’or et dirigez 9 trains emblématiques à travers 10 mondes superbes — 100 % hors ligne !',
+          navPlay: '▶ Disponible sur Google Play',
+          ctaPlay: '🚄 Télécharger GRATUITEMENT sur Google Play',
+          ctaShare: '📤 Partager avec des amis'
+        },
+        es: {
+          title: 'Dream Express: Puzle de Trenes 3D — ALDHFLY GAMES',
+          eyebrow: '⭐ Ya disponible gratis en todo el mundo — Android',
+          h1: 'Dream Express: Puzle de Trenes 3D',
+          lead: 'Gira las vías en 3D, recoge las 3 estrellas doradas y guía 9 trenes icónicos por 10 mundos espectaculares — ¡100 % sin conexión!',
+          navPlay: '▶ Consíguelo en Google Play',
+          ctaPlay: '🚄 Descargar GRATIS en Google Play',
+          ctaShare: '📤 Compartir con amigos'
+        },
+        pt: {
+          title: 'Dream Express: Quebra-Cabeça de Trens 3D — ALDHFLY GAMES',
+          eyebrow: '⭐ Já disponível grátis no mundo todo — Android',
+          h1: 'Dream Express: Quebra-Cabeça de Trens 3D',
+          lead: 'Gire os trilhos em 3D, colete as 3 estrelas douradas e comande 9 trens icônicos por 10 biomas incríveis — 100% offline!',
+          navPlay: '▶ Baixar no Google Play',
+          ctaPlay: '🚄 Baixar GRÁTIS no Google Play',
+          ctaShare: '📤 Compartilhar com amigos'
+        }
+      };
+      var lg = new URLSearchParams(window.location.search).get('lang');
+      var t = L10N[lg];
+      if (!t) return;
+      var style = document.createElement('style');
+      style.textContent = 'html[lang="' + lg + '"] [data-lang-block="ar"]{display:none}html[lang="' + lg + '"] [data-lang-block="en"]{display:revert}';
+      document.head.appendChild(style);
+      document.documentElement.setAttribute('lang', lg);
+      document.documentElement.setAttribute('dir', 'ltr');
+      document.title = t.title;
+      var imgs = document.querySelectorAll('img[data-src-en]');
+      for (var i = 0; i < imgs.length; i++) imgs[i].src = imgs[i].getAttribute('data-src-en');
+      var set = function (sel, val) { var el = document.querySelector(sel); if (el) el.textContent = val; };
+      set('.eyebrow [data-lang-block="en"]', t.eyebrow);
+      set('h1[data-lang-block="en"]', t.h1);
+      set('.hero-lead[data-lang-block="en"]', t.lead);
+      set('.nav-actions .btn-play [data-lang-block="en"]', t.navPlay);
+      set('.cta-row .btn-play [data-lang-block="en"]', t.ctaPlay);
+      set('.cta-row .btn-share [data-lang-block="en"]', t.ctaShare);
     })();
   </script>
 </body>
