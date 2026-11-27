@@ -8971,6 +8971,11 @@
     };
 
     window.handleEscapeOrBackKey = () => {
+      const openDialog = document.querySelector('dialog[open]');
+      if (openDialog && typeof openDialog.close === 'function') {
+        openDialog.close();
+        return 'HANDLED';
+      }
       const simModal = document.getElementById('modal-ad-simulator');
       if (simModal && !simModal.hidden) {
         return 'BLOCKED_AD';
@@ -9010,6 +9015,7 @@
 
     document.addEventListener('keydown', (ev) => {
       if (ev.key === 'Escape' || ev.key === 'Esc') {
+        if (document.querySelector('dialog[open]')) return;
         if (closeTopmostClosableModal()) {
           ev.preventDefault();
           if (window.GameAudio) window.GameAudio.playButtonTap();

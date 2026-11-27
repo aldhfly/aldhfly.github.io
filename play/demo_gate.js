@@ -39,6 +39,17 @@
     dlg.addEventListener('close', function () {
       dlg.style.display = '';
       dlg.returnValue = '';
+      var prev = dlg._prevFocus;
+      dlg._prevFocus = null;
+      var active = document.activeElement;
+      if (active && dlg.contains(active)) {
+        if (prev && prev !== document.body && document.contains(prev) && !prev.closest('[hidden]') && typeof prev.focus === 'function') {
+          try { prev.focus({ preventScroll: true }); } catch (_) {}
+        }
+        if (document.activeElement && dlg.contains(document.activeElement) && typeof document.activeElement.blur === 'function') {
+          document.activeElement.blur();
+        }
+      }
     });
 
     if (!('closedBy' in HTMLDialogElement.prototype)) {
@@ -61,6 +72,10 @@
 
   function showDemoFullGameModal(requestedLevel) {
     var dlg = ensureModal();
+    if (!dlg.open) {
+      var prev = document.activeElement;
+      dlg._prevFocus = (prev && !dlg.contains(prev)) ? prev : null;
+    }
     var titleEl = document.getElementById('itch-gp-modal-title');
     if (titleEl) {
       if (requestedLevel && Number(requestedLevel) > 3) {
@@ -121,11 +136,12 @@
 
     var tabsBar = document.getElementById('sector-tabs-bar');
     if (tabsBar) {
-      var tabs = tabsBar.querySelectorAll('[data-sector-id], .sector-tab-btn');
+      var tabs = tabsBar.querySelectorAll('.sector-tab-pill, [data-sector-id], .sector-tab-btn');
       for (var k = 0; k < tabs.length; k++) {
         var tab = tabs[k];
-        var sid = parseLevelNum(tab.getAttribute('data-sector-id') || tab.textContent);
-        if (sid > 1 && !tab.dataset.demoLockBadged) {
+        var rawSid = tab.getAttribute('data-sector-id') || (tab.dataset && tab.dataset.sectorId) || tab.textContent;
+        var sid = parseLevelNum(rawSid) || (k + 1);
+        if (sid > 1 && !tab.dataset.demoLockBadged && !tab.querySelector('.demo-tab-lock')) {
           tab.dataset.demoLockBadged = '1';
           var badge = document.createElement('span');
           badge.className = 'demo-tab-lock';
