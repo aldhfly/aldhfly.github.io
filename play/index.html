@@ -1,0 +1,1020 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#070B14" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>قطار الأحلام 3D | Dream Express 3D</title>
+  <link rel="preload" href="assets/fonts/Cairo-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/Cairo-Black.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" type="image/png" href="../assets/app-icon-512.png" />
+  <link rel="stylesheet" href="css/style.css?v=12.3" charset="UTF-8" />
+  <style>
+    html, body { height: 100vh; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+    .play-gp-cta-bar { flex-shrink: 0; width: 100%; min-height: 44px; padding: 6px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; background: linear-gradient(90deg, #061024 0%, #0b1e3d 55%, #061024 100%); border-bottom: 1px solid rgba(251, 191, 36, 0.38); z-index: 40; direction: ltr; }
+    .play-portal-back-link { flex-shrink: 0; display: inline-flex; align-items: center; min-height: 32px; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.09); border: 1px solid rgba(148, 163, 184, 0.35); color: #f8fafc; font-size: 0.78rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .play-gp-cta-btn { flex: 1 1 auto; min-width: 0; display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 5px 12px; border-radius: 999px; background: linear-gradient(90deg, #10b981, #059669); border: 1px solid #6ee7b7; color: #ffffff; font-size: 0.8rem; font-weight: 800; text-decoration: none; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35); }
+    .app-shell { flex: 1 1 auto; min-height: 0; height: auto !important; }
+    #admob-banner-slot { display: none !important; }
+    .level-node-btn.demo-locked-node { opacity: 0.72; cursor: pointer; }
+    dialog#itch-gp-modal { margin: auto; padding: 0; border: 0; background: transparent; max-width: min(440px, calc(100vw - 24px)); color: #fff; font-family: Cairo, system-ui, sans-serif; }
+    dialog#itch-gp-modal[open] { display: flex; align-items: center; justify-content: center; overscroll-behavior: contain; }
+    dialog#itch-gp-modal::backdrop { background: rgba(5, 11, 24, 0.88); overflow: hidden; overscroll-behavior: contain; }
+    .demo-gp-modal-card { width: 100%; background: linear-gradient(160deg, #0f172a, #1e293b); border: 2px solid #fbbf24; border-radius: 22px; padding: 26px 20px; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75); }
+    .demo-gp-emoji { font-size: 2.2rem; margin-bottom: 8px; }
+    .demo-gp-title { color: #fbbf24; font-size: 1.25rem; font-weight: 900; margin-bottom: 10px; line-height: 1.35; }
+    .demo-gp-desc { color: #e2e8f0; font-size: 0.95rem; line-height: 1.55; margin-bottom: 18px; }
+    .demo-gp-sub { display: block; margin-top: 6px; font-size: 0.84rem; color: #94a3b8; }
+    .demo-gp-download-btn { display: flex; align-items: center; justify-content: center; min-height: 48px; background: linear-gradient(90deg, #10b981, #059669); color: #ffffff; font-weight: 800; font-size: 1rem; padding: 12px 16px; border-radius: 14px; text-decoration: none; margin-bottom: 10px; }
+    .demo-gp-close-btn { min-height: 40px; background: transparent; border: 1px solid #475569; color: #cbd5e1; padding: 8px 16px; border-radius: 10px; cursor: pointer; font-size: 0.88rem; }
+  </style>
+  <script>
+    (function () {
+      var keys = ["dream_express_save_v123_public","dream_express_save_v122_public","dream_express_save_v121_public","dream_express_save_v120_public","dream_express_save_v110_public","dream_express_save_v100_public","dream_express_save_v80_worldclass_public","dream_express_save_v70_public"];
+      for (var i = 0; i < keys.length; i++) {
+        try {
+          var raw = localStorage.getItem(keys[i]);
+          if (!raw) continue;
+          var parsed = JSON.parse(raw);
+          if (!parsed || typeof parsed !== "object") continue;
+          var changed = false;
+          if (Number(parsed.unlockedLevel || 1) > 3) { parsed.unlockedLevel = 3; changed = true; }
+          if (Number(parsed.lastPlayedLevel || 1) > 3) { parsed.lastPlayedLevel = 3; changed = true; }
+          if (parsed.activeSession && Number(parsed.activeSession.levelId || 0) > 3) { parsed.activeSession = null; changed = true; }
+          if (changed) localStorage.setItem(keys[i], JSON.stringify(parsed));
+        } catch (_) {}
+      }
+      try { if (window.AndroidAdMob) document.documentElement.classList.add("has-native-admob"); } catch (_) {}
+    })();
+  </script>
+</head>
+<body>
+  <nav id="play-gp-cta-bar" class="play-gp-cta-bar" aria-label="Google Play Full Game Bar">
+    <a id="play-portal-back-link" class="play-portal-back-link" href="../">← Portal</a>
+    <a id="play-gp-cta-link" class="play-gp-cta-btn" href="https://play.google.com/store/apps/details?id=com.dreamexpress.puzzletracks" target="_blank" rel="noopener">
+      🚄 Download Full 100-Level Android Game on Google Play
+    </a>
+  </nav>
+  <div id="app-shell" class="app-shell" data-active-screen="screen-menu" data-sector-theme="1">
+
+    <!-- ==================== V7.0: 3D ENGINE BOOT LOADER (WITH MANDATORY 3.5s FAILSAFE) ==================== -->
+    <div id="boot-loader-overlay" class="boot-loader-overlay" role="status" aria-live="polite">
+      <div class="boot-loader-card">
+        <div class="boot-loader-emblem">
+          <span class="boot-loader-icon">🚄</span>
+          <span class="boot-loader-chip">3D</span>
+        </div>
+        <h2 id="boot-loader-title" class="boot-loader-title">قطار الأحلام 3D</h2>
+        <p id="boot-loader-subtitle" class="boot-loader-subtitle">جاري تشغيل المحرك الثلاثي الأبعاد وتحميل القاطرات...</p>
+        <div class="boot-loader-bar-track">
+          <div id="boot-loader-fill" class="boot-loader-bar-fill" style="width: 14%"></div>
+        </div>
+        <div class="boot-loader-meta">
+          <span id="boot-loader-status">تهيئة المسارات ثلاثية الأبعاد...</span>
+          <strong id="boot-loader-pct">14%</strong>
+        </div>
+        <div class="boot-studio-badge">⚡ ALDHFLY GAMES STUDIO</div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var dismissed = false;
+        window.__dismissBootLoader = function () {
+          if (dismissed) return;
+          dismissed = true;
+          var overlay = document.getElementById('boot-loader-overlay');
+          var fill = document.getElementById('boot-loader-fill');
+          var pct = document.getElementById('boot-loader-pct');
+          if (fill) fill.style.width = '100%';
+          if (pct) pct.textContent = '100%';
+          if (!overlay) return;
+          overlay.classList.add('boot-loader-fadeout');
+          setTimeout(function () {
+            overlay.hidden = true;
+          }, 260);
+        };
+        window.__updateBootLoaderProgress = function (loaded, total) {
+          if (dismissed) return;
+          var safeTotal = Math.max(1, Number(total) || 1);
+          var ratio = Math.min(1, Math.max(0.14, (Number(loaded) || 0) / safeTotal));
+          var percent = Math.min(100, Math.round(ratio * 100));
+          var fill = document.getElementById('boot-loader-fill');
+          var pct = document.getElementById('boot-loader-pct');
+          if (fill) fill.style.width = percent + '%';
+          if (pct) pct.textContent = percent + '%';
+          if (percent >= 100) {
+            window.__dismissBootLoader();
+          }
+        };
+        // Mandatory 3.5-second failsafe timeout: never allow the boot screen to hang on any device
+        setTimeout(function () {
+          window.__dismissBootLoader();
+        }, 3500);
+      })();
+    </script>
+
+    <!-- ==================== SLEEK GLASSMORPHIC TOP BAR ==================== -->
+    <header id="global-topbar" class="global-topbar">
+      <div class="topbar-right-group">
+        <button class="brand-mini" id="btn-home-logo" title="القائمة الرئيسية">
+          <span class="brand-mini-icon">🚄</span>
+        </button>
+
+        <!-- Integrated Overall Progress Pill -->
+        <div class="topbar-progress-pill" title="التقدم الكلي في استعادة الشبكة (100 مهمة)">
+          <div class="topbar-progress-meta">
+            <span class="tp-label">التقدم</span>
+            <strong id="menu-color-percent">0%</strong>
+          </div>
+          <div class="progress-track progress-track-mini">
+            <div id="menu-color-bar" class="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topbar-stats">
+        <div class="stat-pill stat-stars" title="إجمالي النجوم المكتسبة">
+          <span class="stat-icon">⭐</span>
+          <span id="ui-stars-count" class="stat-value" dir="ltr">0/300</span>
+        </div>
+
+        <button id="btn-open-shop-top" class="stat-pill stat-coins" title="ترسانة القاطرات والمتجر">
+          <span class="stat-icon">🪙</span>
+          <span id="ui-coins-count" class="stat-value">200</span>
+          <span class="stat-plus">+</span>
+        </button>
+
+        <button id="btn-open-shop-hints" class="stat-pill stat-hints" title="شحنات رادار التوجيه">
+          <span class="stat-icon">💡</span>
+          <span id="ui-hints-count" class="stat-value">3</span>
+        </button>
+
+        <button id="btn-open-achievements" class="icon-btn ach-top-btn" aria-label="الإنجازات والمكافآت" title="الإنجازات والمكافآت">
+          <span>🏆</span>
+          <span id="ui-ach-badge" class="ach-notif-dot" hidden>!</span>
+        </button>
+
+        <button id="btn-toggle-lang" class="icon-btn lang-top-btn" aria-label="تبديل اللغة / Switch Language" title="Language / اللغة">
+          <span id="ui-lang-label">AR</span>
+        </button>
+
+        <button id="btn-toggle-audio" class="icon-btn" aria-label="كتم أو تشغيل الصوت" title="النظام الصوتي">
+          <span id="ui-audio-icon">🔊</span>
+        </button>
+
+        <button id="btn-open-settings" class="icon-btn settings-top-btn" aria-label="الإعدادات / Settings" title="الإعدادات / Settings">
+          <span>⚙️</span>
+        </button>
+
+        <button id="btn-open-privacy" class="icon-btn" aria-label="سياسة الخصوصية / Privacy Policy" title="سياسة الخصوصية / Privacy Policy">
+          <span>🔒</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ==================== SCREEN 1: MODERN 3D MAIN MENU ==================== -->
+    <section id="screen-menu" class="screen active">
+      <div class="menu-hero-card">
+        <!-- Full-Screen Live 3D WebGL Train Stage -->
+        <div id="menu-3d-stage" class="menu-3d-stage"></div>
+
+        <!-- Ambient Fallback Lighting Layer -->
+        <div class="menu-sky-bg">
+          <div class="cyber-grid-overlay"></div>
+          <div class="menu-sun-glow"></div>
+          <div class="menu-hills-back"></div>
+          <div class="menu-hills-front"></div>
+          <div class="menu-bridge-track"></div>
+          <div id="menu-train-preview" class="menu-train-preview"></div>
+        </div>
+
+        <!-- Cinematic Glass Vignette Overlay -->
+        <div class="menu-cinematic-vignette"></div>
+
+        <!-- Upper-Third Modern Game Logo -->
+        <div class="menu-logo-badge">
+          <div class="logo-crown-tag" id="ui-vip-badge" hidden>👑 ترخيص القيادة القصوى VIP</div>
+          <div class="logo-modern-emblem">
+            <span class="emblem-glow-icon">🚄</span>
+            <span class="emblem-3d-chip">3D</span>
+          </div>
+          <h1 class="game-title">قطار الأحلام</h1>
+          <div id="owner-build-pill" class="owner-build-pill" hidden>👑 نسخة المالك المفتوحة • جميع المراحل &#x2066;1–100&#x2069; متاحة للفحص</div>
+          <div id="ui-conductor-rank-pill" class="conductor-rank-pill">🥉 الرتبة: سائق متدرب (&#x2066;0/300&#x2069; ⭐)</div>
+          <p class="game-subtitle">الشبكة الحديدية القارية • ١٠٠ مهمة</p>
+          <span id="menu-studio-credit" class="menu-studio-credit">BY ALDHFLY GAMES</span>
+        </div>
+
+        <!-- Bottom Glassmorphic 3-Button Action Dock -->
+        <div class="menu-actions">
+          <button id="btn-play-now" class="btn btn-glass-hero pulse-btn">
+            <span class="btn-hero-icon">🚄</span>
+            <div class="btn-text-col">
+              <span id="btn-play-mainlabel" class="btn-main-label">العب المهمة الحالية (1)</span>
+              <small id="btn-play-sublabel" class="btn-sub-label">بوابة وادي الضباب</small>
+            </div>
+            <span class="btn-hero-chevron">◀</span>
+          </button>
+
+          <div class="menu-secondary-row">
+            <button id="btn-goto-map" class="btn btn-glass-secondary">
+              <span class="btn-sec-icon">🗺️</span>
+              <span class="btn-sec-label">خريطة القطاعات</span>
+            </button>
+            <button id="btn-goto-shop" class="btn btn-glass-secondary btn-glass-gold">
+              <span class="btn-sec-icon">⚙️</span>
+              <span class="btn-sec-label">ترسانة القاطرات</span>
+            </button>
+          </div>
+
+          <div class="menu-daily-row">
+            <button id="btn-daily-challenge" class="btn btn-glass-secondary btn-daily-challenge">
+              <span class="btn-sec-icon">🌍</span>
+              <span id="btn-daily-challenge-label" class="btn-sec-label">تحدي اليوم &#x2066;×3&#x2069; ذهب</span>
+              <span id="ui-daily-challenge-dot" class="ach-notif-dot" hidden>!</span>
+            </button>
+            <button id="btn-open-daily-rewards" class="btn btn-glass-secondary btn-daily-streak" title="مكافآت الدخول اليومي">
+              <span class="btn-sec-icon">🎁</span>
+              <span id="btn-daily-rewards-label" class="btn-sec-label">مكافأة اليوم</span>
+              <span id="ui-daily-gift-dot" class="ach-notif-dot" hidden>!</span>
+            </button>
+          </div>
+
+          <div class="menu-daily-row menu-global-modes-row">
+            <button id="btn-endless-mode" class="btn btn-glass-secondary btn-endless-mode" title="ماراثون القطار اللانهائي">
+              <span class="btn-sec-icon">♾️</span>
+              <span id="btn-endless-mode-label" class="btn-sec-label">ماراثون السكك اللانهائي</span>
+            </button>
+            <button id="btn-station-empire" class="btn btn-glass-secondary btn-station-empire" title="خزنة تذاكر إمبراطورية المحطة">
+              <span class="btn-sec-icon">🏛️</span>
+              <span id="btn-station-empire-label" class="btn-sec-label">محطة &#x2066;Lv.1&#x2069; • اجمع التذاكر</span>
+              <span id="ui-empire-dot" class="ach-notif-dot" hidden>!</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SCREEN 2: HORIZONTAL SWIPEABLE SECTORS & RAILWAY NODES ==================== -->
+    <section id="screen-map" class="screen">
+      <!-- Sleek Map Top Navigation Row -->
+      <div class="screen-subheader glass-panel">
+        <button id="btn-map-back" class="btn-back">
+          <span>➜</span>
+          <span>الرئيسية</span>
+        </button>
+        <div class="subheader-title-wrap">
+          <h2 id="map-sector-indicator" class="screen-title">القطاع 1 من 10</h2>
+        </div>
+        <button id="btn-map-next-3star" class="btn-next-3star" title="انتقل فوراً لأقرب مهمة لم تكتمل بـ 3 نجوم">
+          <span>⚡</span>
+          <span id="btn-map-next-3star-label">صيد &#x2066;3⭐&#x2069;</span>
+        </button>
+        <div class="map-total-stars">
+          <span>⭐</span>
+          <strong id="map-stars-total" dir="ltr">0/300</strong>
+        </div>
+      </div>
+
+      <!-- V6.0 Star Milestone Road (25, 50, 100, 150, 200, 250, 300 ⭐ Chest Rewards) -->
+      <div id="star-milestone-road" class="star-milestone-road glass-panel" aria-label="طريق النجوم والمكافآت">
+        <div class="star-road-header">
+          <span id="star-road-title" class="star-road-title">🎁 طريق النجوم (اضغط على الصندوق لاستلام جائزتك)</span>
+          <strong id="star-road-prog-text" class="star-road-prog-text">0 / 300 ⭐</strong>
+        </div>
+        <div class="star-road-track-wrap" dir="ltr">
+          <div class="star-road-bar-bg">
+            <div id="star-road-bar-fill" class="star-road-bar-fill" style="width: 0%"></div>
+          </div>
+          <div id="star-road-nodes" class="star-road-nodes">
+            <!-- Populated dynamically by js/game.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Horizontal Quick-Switch Sector Pills (1 to 10) -->
+      <div id="sector-tabs-bar" class="sector-tabs-bar" role="tablist" aria-label="القطاعات العشرة">
+        <!-- Populated dynamically by js/game.js -->
+      </div>
+
+      <!-- Horizontal Swipeable Sector Cards Carousel (1 Card Centered at a Time) -->
+      <div class="sectors-carousel-shell">
+        <button id="btn-sector-prev" class="carousel-arrow-btn arrow-prev" aria-label="القطاع السابق" title="القطاع السابق">▶</button>
+
+        <div id="sectors-carousel-viewport" class="sectors-carousel-viewport" dir="ltr">
+          <div id="stations-list" class="sectors-carousel-track">
+            <!-- Populated dynamically by js/game.js -->
+          </div>
+        </div>
+
+        <button id="btn-sector-next" class="carousel-arrow-btn arrow-next" aria-label="القطاع التالي" title="القطاع التالي">◀</button>
+      </div>
+    </section>
+
+    <!-- ==================== SCREEN 3: MINIMALIST IN-GAME HUD (80%+ 3D VIEWPORT) ==================== -->
+    <section id="screen-game" class="screen">
+      <!-- Single Compact Floating Top Bar (Moves, Energy 0/3, Time/Bonus) -->
+      <div class="game-hud glass-floating-bar">
+        <button id="btn-game-to-map" class="hud-icon-back" title="العودة لخريطة القطاعات" aria-label="العودة لخريطة القطاعات">
+          <span>➜</span>
+        </button>
+
+        <div class="hud-level-info">
+          <span id="hud-station-name" class="hud-station-tag" hidden></span>
+          <h3 id="hud-level-title" class="hud-level-title">مهمة 1</h3>
+        </div>
+
+        <div class="hud-metrics">
+          <!-- Capsule 1: Moves -->
+          <div id="hud-moves-pill" class="hud-capsule moves-pill moves-open" title="الحركات المتبقية">
+            <span id="hud-moves-icon" class="cap-icon">🔓</span>
+            <span class="cap-label">الحركات</span>
+            <strong id="hud-moves-count" class="cap-val">8</strong>
+          </div>
+
+          <!-- Capsule 2: Stars 0/3 -->
+          <div id="hud-sparks-pill" class="hud-capsule sparks-pill" title="النجوم الذهبية على المسار">
+            <span class="cap-icon">⭐</span>
+            <span class="cap-label">النجوم</span>
+            <strong id="hud-sparks-count" class="cap-val" dir="ltr">0/3</strong>
+          </div>
+
+          <!-- Capsule 3: Time & Combo Bonus -->
+          <div id="storm-timer-strip" class="hud-capsule timer-pill" title="الوقت والمكافأة">
+            <span class="cap-icon" id="storm-status-icon">⏱️</span>
+            <strong id="hud-timer-sec" class="cap-val" dir="ltr">60s</strong>
+            <span id="hud-combo-pill" class="combo-pill">
+              <strong id="hud-combo-count" dir="ltr">×1</strong>
+            </span>
+            <div class="storm-bar-wrap">
+              <div id="hud-timer-bar" class="storm-bar-fill" style="transform: scaleX(1);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top-Left Camera & Cryo Controls (Placed directly below Top Bar so they NEVER cover any board cell) -->
+      <div class="floating-side-controls" dir="ltr">
+        <button id="btn-camera-mode" class="btn-circle-float" title="تبديل منظور الكاميرا (3D / ملاحقة القطار / علوي)">
+          <span class="float-icon">🎥</span>
+          <small id="camera-mode-label" class="float-sub">3D</small>
+        </button>
+        <button id="btn-freeze-time" class="btn-circle-float btn-circle-cryo" title="تجميد المؤقت &#x2066;+20&#x2069; ثانية">
+          <span class="float-icon">❄️</span>
+          <small class="float-sub">تجميد</small>
+        </button>
+        <button id="btn-quick-garage" class="btn-circle-float btn-circle-garage" title="ترسانة القاطرات والمتجر">
+          <span class="float-icon">⚙️</span>
+          <small id="quick-garage-label" class="float-sub">القاطرات</small>
+        </button>
+        <button id="btn-replay-dialogue" class="btn-circle-float" title="غرفة القيادة والطاقم الثلاثي الأبعاد">
+          <span class="float-icon">🧑‍✈️</span>
+          <small id="crew-3d-label" class="float-sub">الطاقم</small>
+        </button>
+        <button id="btn-hud-settings" class="btn-circle-float" title="إعدادات الصوت والرسوميات">
+          <span class="float-icon">⚙️</span>
+          <small id="hud-settings-label" class="float-sub">الإعدادات</small>
+        </button>
+        <button id="btn-rent-train" class="btn-circle-float btn-circle-rent" title="تجربة قطار خارق لهذه المهمة مجاناً (إعلان مكافأة)" hidden>
+          <span class="float-icon">🚄</span>
+          <small id="rent-train-label" class="float-sub">قطار خارق</small>
+        </button>
+        <button id="btn-auto-play" class="btn-circle-float btn-circle-autoplay" title="حل وتشغيل المرحلة تلقائياً (خاص بالمالك)" hidden>
+          <span class="float-icon">🤖</span>
+          <small class="float-sub">حل آلي</small>
+        </button>
+      </div>
+
+      <!-- Maximized 3D WebGL Play Area (>82% Viewport Height, Zero Thick Borders) -->
+      <div class="board-stage-wrapper">
+        <div id="board-frame" class="board-frame station-theme-1">
+          <div id="board-fog-layer" class="board-fog-layer"></div>
+          <div id="board-color-wave" class="board-color-wave"></div>
+
+          <!-- V6.0 Tactical Boss Stage Alert Banner -->
+          <div id="boss-stage-banner" class="boss-stage-banner" hidden>
+            <span class="boss-banner-icon">👑</span>
+            <span id="boss-banner-text" class="boss-banner-text">مهمة زعيم القطاع • مكافأة إضافية &#x2066;+50&#x2069; 🪙</span>
+          </div>
+
+          <!-- V8.5 Visual Mechanic Discovery Card (1-Time 3.8s Micro-Guide) -->
+          <div id="mechanic-discovery-card" class="mechanic-discovery-card" hidden>
+            <span id="mechanic-card-icon" class="mechanic-card-icon">🌉</span>
+            <div class="mechanic-card-body">
+              <strong id="mechanic-card-title">جسر معلّق فوق الوادي</strong>
+              <small id="mechanic-card-desc">اضغط لتدويره وربط طرفي الجسر بأمان!</small>
+            </div>
+          </div>
+
+          <!-- V6.0 Level 1 Interactive Tutorial Hand Pointer -->
+          <div id="tutorial-hand-pointer" class="tutorial-hand-pointer" hidden>
+            <span class="tutorial-hand-emoji">👆</span>
+            <span id="tutorial-hand-label" class="tutorial-hand-label">اضغط لتدوير السكة</span>
+          </div>
+
+          <!-- V12.1 Single Permanent Speed ([1] [2] [3]) + Live Chase Camera Control Bar -->
+          <div id="live-dispatch-bar" class="live-dispatch-bar">
+            <span id="live-dispatch-title" class="live-dispatch-title">🚄 السرعة:</span>
+            <button id="btn-speed-1x" class="dispatch-pill-btn active" type="button" dir="ltr">1</button>
+            <button id="btn-speed-2x" class="dispatch-pill-btn" type="button" dir="ltr">2</button>
+            <button id="btn-speed-3x" class="dispatch-pill-btn" type="button" dir="ltr">3</button>
+            <button id="btn-live-chase-cam" class="dispatch-pill-btn dispatch-cam-btn" type="button">
+              <span>🎥</span>
+              <span id="btn-live-chase-label">الملاحقة</span>
+            </button>
+          </div>
+
+          <!-- Grid cells container (direction: ltr enforced so col 0 is West/Left and col N-1 is East/Right) -->
+          <div id="puzzle-grid" class="puzzle-grid grid-4x4" dir="ltr"></div>
+
+          <!-- 2D Fallback Canvas overlay (automatically hidden when WebGL 3D Engine is active) -->
+          <canvas id="train-canvas" class="train-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Floating Sleek Bottom Control Bar -->
+      <div class="game-action-bar glass-floating-dock">
+        <button id="btn-reset-level" class="btn btn-action btn-reset" title="إعادة ضبط الشبكة مجاناً">
+          <span class="action-icon">🔄</span>
+          <span class="action-label">إعادة</span>
+        </button>
+
+        <button id="btn-undo-move" class="btn btn-action btn-undo" title="تراجع عن آخر حركة واستعادة الحركة مجاناً" disabled>
+          <span class="action-icon">↩️</span>
+          <span id="btn-undo-label" class="action-label">تراجع</span>
+        </button>
+
+        <button id="btn-smart-hint" class="btn btn-action btn-hint" title="رادار التوجيه الذكي: تثبيت قطعتين في زاوية الحل الصحيحة">
+          <span class="action-icon">💡</span>
+          <div class="action-text-wrap">
+            <span class="action-label">رادار التوجيه</span>
+            <small id="hint-btn-badge" class="action-badge">3 💡</small>
+          </div>
+        </button>
+
+        <button id="btn-launch-train" class="btn btn-action btn-launch" disabled>
+          <span class="action-icon">🚄</span>
+          <span id="btn-launch-label" class="action-label">انطلق!</span>
+        </button>
+      </div>
+
+      <!-- V12.0 4-Step Interactive Spotlight Coach (Mission 1 First Play) -->
+      <div id="tutorial-spotlight-coach" class="tutorial-spotlight-coach" hidden>
+        <div id="tutorial-spotlight-ring" class="tutorial-spotlight-ring"></div>
+        <div id="tutorial-coach-card" class="tutorial-coach-card">
+          <div class="tutorial-coach-top">
+            <span id="tutorial-step-badge" class="tutorial-step-badge">1 / 4</span>
+            <strong id="tutorial-coach-title" class="tutorial-coach-title">تدوير السكة</strong>
+            <button id="btn-tutorial-skip" class="btn-tutorial-skip" type="button">تخطي ⏭️</button>
+          </div>
+          <p id="tutorial-coach-desc" class="tutorial-coach-desc">اضغط على قطعة السكة لتدويرها &#x2066;90°&#x2069; وتوصيل المسار عبر النجوم الثلاث إلى المحطة!</p>
+          <div id="tutorial-coach-actions" class="tutorial-coach-actions" hidden>
+            <button id="btn-tutorial-next" class="btn btn-primary btn-sm tutorial-next-btn" type="button">التالي ◀</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIP PROMO & STATUS BANNER SLOT ==================== -->
+    <footer id="admob-banner-slot" class="admob-banner-slot" aria-label="مساحة ترويجية">
+      <div class="admob-banner-inner">
+        <span class="ad-tag">VIP</span>
+        <span id="admob-banner-text" class="ad-banner-copy">⚡ ترخيص القيادة القصوى VIP: افتح القاطرة الذهبية 3D وأزل الإعلانات!</span>
+        <button id="btn-banner-vip" class="ad-banner-cta">ترقية</button>
+      </div>
+    </footer>
+
+    <!-- ==================== MODAL 1: TACTICAL STORY DIALOGUE ==================== -->
+    <div id="modal-dialogue" class="modal-backdrop" hidden>
+      <div class="modal-card dialogue-modal-card">
+        <div class="dialogue-stage-header">
+          <span id="dialogue-chapter-badge" class="dialogue-chapter-badge">🌲 القطاع 1</span>
+          <button id="btn-skip-dialogue" class="btn-skip-dialogue">تخطي ⏭️</button>
+        </div>
+
+        <div id="dialogue-scene-banner" class="dialogue-scene-banner">
+          <div id="dialogue-portrait-box" class="dialogue-portrait-box"></div>
+          <div class="dialogue-speaker-tag" id="dialogue-speaker-name">الكابتن فؤاد</div>
+        </div>
+
+        <div class="dialogue-body">
+          <p id="dialogue-text" class="dialogue-text"></p>
+        </div>
+
+        <div class="dialogue-footer">
+          <div id="dialogue-dots" class="dialogue-dots"></div>
+          <button id="btn-next-dialogue" class="btn btn-primary">
+            <span id="btn-next-dialogue-label">التالي</span>
+            <span>◀</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 2: SMART RADAR HINT (REWARDED AD #1) ==================== -->
+    <div id="modal-hint" class="modal-backdrop" hidden>
+      <div class="modal-card">
+        <button class="modal-close-btn" data-close-modal="modal-hint">✕</button>
+        <div class="modal-avatar-header" id="hint-modal-avatar"></div>
+        <h3 class="modal-title">💡 رادار التوجيه الآلي</h3>
+        <p class="modal-desc">
+          «سيقوم الجيروسكوب الهيدروليكي بتدوير <strong>قطعتين من المسار الرئيسي</strong> إلى زاوية الحل الدقيقة وقفلهما مغناطيسياً دون استهلاك أي حركة!»
+        </p>
+
+        <div class="modal-actions-col">
+          <button id="btn-use-free-hint" class="btn btn-primary">
+            <span>💡</span>
+            <span>استخدام شحنة توجيه (<span id="modal-hint-stock">0</span>)</span>
+          </button>
+
+          <button id="btn-watch-ad-hint" class="btn btn-rewarded">
+            <span>🎬</span>
+            <span>شاهد إعلاناً قصيراً (تثبيت قطعتين مجاناً)</span>
+          </button>
+
+          <button id="btn-buy-hint-coins" class="btn btn-gold">
+            <span>🪙</span>
+            <span>شراء شحنة توجيه فورية: قفل قطعتين (150 عملة)</span>
+          </button>
+
+          <button id="btn-buy-super-hint-coins" class="btn btn-gold">
+            <span>🔧</span>
+            <span>المفتاح الذهبي الفائق: توجيه وقفل 4 قطع دفعة واحدة (250 عملة)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 3: OUT OF MOVES / TIME EXPIRED (REWARDED AD #2 + COIN SINK) ==================== -->
+    <div id="modal-out-of-moves" class="modal-backdrop" hidden>
+      <div class="modal-card">
+        <div class="modal-avatar-header" id="oom-modal-avatar"></div>
+        <h3 class="modal-title">⚠️ نفاد طاقة التحويل!</h3>
+        <p class="modal-desc">
+          «استُهلكت حركات التحويل الهيدروليكية قبل اكتمال خط الطاقة! اشحن المفاعل الاحتياطي لمواصلة المهمة من نفس الموقع!»
+        </p>
+
+        <div class="modal-actions-col">
+          <button id="btn-watch-ad-moves" class="btn btn-primary btn-rewarded-green pulse-btn">
+            <span>🎬</span>
+            <span>&#x2066;+9&#x2069; حركات إضافية مجاناً (إعلان مكافأة)</span>
+          </button>
+
+          <button id="btn-buy-oom-coins" class="btn btn-gold">
+            <span>🪙</span>
+            <span id="btn-buy-oom-coins-label">شراء &#x2066;+9&#x2069; حركات فورية (100 عملة)</span>
+          </button>
+
+          <button id="btn-oom-retry" class="btn btn-secondary">
+            <span>🔄</span>
+            <span>إعادة المهمة من البداية (مجاناً)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 4: VICTORY & SECTOR RESTORATION (REWARDED AD #3) ==================== -->
+    <div id="modal-victory" class="modal-backdrop" hidden>
+      <div class="modal-card victory-modal-card">
+        <div class="victory-header-ribbon">⚡ اكتمل ربط المحطة بنجاح!</div>
+
+        <div id="victory-stars-row" class="victory-stars-row">
+          <span class="v-star" id="v-star-1">⭐</span>
+          <span class="v-star" id="v-star-2">⭐</span>
+          <span class="v-star" id="v-star-3">⭐</span>
+        </div>
+
+        <h3 id="victory-level-title" class="modal-title">مهمة ناجحة أيها القائد!</h3>
+        <p id="victory-perf-text" class="victory-perf-text">أداء تكتيكي مذهل!</p>
+
+        <!-- Sector Power Restoration Meter -->
+        <div class="victory-color-box">
+          <div class="victory-color-top">
+            <span id="victory-station-label">⚡ طاقة القطاع</span>
+            <strong id="victory-station-pct">20%</strong>
+          </div>
+          <div class="progress-track">
+            <div id="victory-station-bar" class="progress-fill" style="width: 20%"></div>
+          </div>
+        </div>
+
+        <!-- Coins Earned Breakdown -->
+        <div class="victory-coins-box">
+          <div class="coins-earned-main">
+            <span>🪙 المكافأة الإجمالية:</span>
+            <strong id="victory-coins-amount">&#x2066;+120&#x2069; عملة ذهبية</strong>
+          </div>
+          <small id="victory-coins-formula" class="coins-formula"></small>
+        </div>
+
+        <!-- 3-Win Mystery Supply Chest -->
+        <div id="victory-chest-box" class="victory-chest-box">
+          <div class="victory-chest-top">
+            <span id="victory-chest-label">🎁 صندوق الإمداد الذهبي: &#x2066;1/3&#x2069;</span>
+            <strong id="victory-chest-pct" dir="ltr">33%</strong>
+          </div>
+          <div class="progress-track">
+            <div id="victory-chest-bar" class="progress-fill" style="width: 33%"></div>
+          </div>
+          <button id="btn-open-mystery-chest" class="btn btn-gold btn-block pulse-btn" hidden>
+            <span id="btn-open-mystery-chest-label">🎁 فتح صندوق الإمداد الذهبي (&#x2066;+150&#x2069; 🪙 و &#x2066;+1&#x2069; 💡) • إعلان</span>
+          </button>
+        </div>
+
+        <div class="modal-actions-col">
+          <button id="btn-watch-ad-double" class="btn btn-gold pulse-btn">
+            <span>🎬</span>
+            <span id="btn-double-label">مضاعفة المكافأة &#x2066;×2&#x2069; (&#x2066;+240&#x2069; عملة)</span>
+          </button>
+
+          <button id="btn-victory-share" class="btn btn-secondary btn-share-victory">
+            <span>📤</span>
+            <span id="btn-victory-share-label">شارك انتصارك وتحدَّ صديقك (&#x2066;+100&#x2069; 🪙)</span>
+          </button>
+
+          <div class="victory-bottom-row">
+            <button id="btn-victory-map" class="btn btn-secondary">
+              <span>🗺️</span>
+              <span>القطاعات</span>
+            </button>
+            <button id="btn-victory-next" class="btn btn-primary">
+              <span id="btn-victory-next-label">المهمة التالية</span>
+              <span>⏭️</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 5: ARMORED LOCOMOTIVE GARAGE & VIP SHOP ==================== -->
+    <div id="modal-shop" class="modal-backdrop" hidden>
+      <div class="modal-card shop-modal-card">
+        <div class="shop-header">
+          <div>
+            <h3 class="modal-title">⚙️ ترسانة القاطرات 3D ومتجر VIP</h3>
+            <p class="shop-subtitle">طوّر هيكل القاطرة التوربينية ثلاثية الأبعاد أو اشحن رادار التوجيه</p>
+          </div>
+          <button class="modal-close-btn" data-close-modal="modal-shop">✕</button>
+        </div>
+
+        <!-- VIP First Class Bundle Card -->
+        <div id="shop-vip-card" class="shop-vip-card">
+          <div class="vip-badge-top">👑 الحزمة الاستراتيجية القصوى</div>
+          <h4>ترخيص القيادة القصوى (Overdrive VIP Pass)</h4>
+          <ul class="vip-perks-list">
+            <li>⚡ فتح <strong>قاطرة البلازما الإمبراطورية الذهبية 3D</strong> بشرارات نجمية وكشاف ليزر</li>
+            <li>🚫 إزالة الإعلانات البينية وإعلان البانر السفلي نهائياً</li>
+            <li>💡 <strong>&#x2066;+10&#x2069; شحنات رادار ذكي</strong> فورية + <strong>🪙 &#x2066;1,500&#x2069; عملة ذهبية</strong></li>
+          </ul>
+          <button id="btn-buy-vip-pack" class="btn btn-gold btn-block">
+            <span id="vip-buy-label">👑 شراء ترخيص القيادة VIP (&#x2066;$2.99&#x2069; / &#x2066;11.99 ر.س&#x2069;)</span>
+          </button>
+          <button id="btn-restore-purchases" class="btn btn-secondary btn-block btn-sm" style="margin-top: 8px;">
+            <span>🔄</span>
+            <span id="restore-purchases-label">استعادة المشتريات السابقة</span>
+          </button>
+        </div>
+
+        <!-- V8.5 Global Starter Conductor Welcome Pack ($0.99 / 3.99 SAR) -->
+        <div id="shop-starter-card" class="shop-starter-card">
+          <div id="starter-badge-top" class="starter-badge-top">🎁 عرض ترحيب القائد العالمي (لمرة واحدة)</div>
+          <h4 id="starter-pack-title">حزمة انطلاقة القائد (&#x2066;+2,500&#x2069; 🪙 + &#x2066;3&#x2069; 💡 رادار هدية!)</h4>
+          <p id="starter-pack-desc" class="starter-pack-desc">أقوى دفعة بداية لفتح القاطرات النفاثة مع 3 شحنات رادار توجيه مجانية إضافية</p>
+          <button id="btn-buy-starter-pack" class="btn btn-primary btn-block">
+            <span id="starter-buy-label">🎁 احصل على حزمة البداية (&#x2066;$0.99&#x2069; / &#x2066;3.99 ر.س&#x2069;)</span>
+          </button>
+        </div>
+
+        <!-- Smart Hints Section -->
+        <div class="shop-section">
+          <h4 class="shop-section-title">💡 شحنات رادار التوجيه</h4>
+          <div id="shop-hint-row-1" class="shop-item-row">
+            <div class="shop-item-info">
+              <strong id="shop-hint-row-1-title">شحنة رادار توجيه آلي (&#x2066;+1&#x2069; 💡)</strong>
+              <small id="shop-hint-row-1-desc">تثبّت قطعتين في زاوية الحل الصحيحة بقفل مغناطيسي دون خصم حركات</small>
+            </div>
+            <button id="btn-shop-buy-hint" class="btn btn-secondary btn-sm">
+              <span>🪙 150</span>
+            </button>
+          </div>
+          <div id="shop-hint-row-2" class="shop-item-row">
+            <div class="shop-item-info">
+              <strong id="shop-hint-row-2-title">شحنة مجانية عبر إعلان مكافأة (&#x2066;+1&#x2069; 💡)</strong>
+              <small id="shop-hint-row-2-desc">شاهد إعلاناً قصيراً واحصل على شحنة رادار فورية</small>
+            </div>
+            <button id="btn-shop-ad-hint" class="btn btn-rewarded btn-sm">
+              <span id="shop-hint-row-2-badge">🎬 مجاناً</span>
+            </button>
+          </div>
+          <div id="shop-hint-row-3" class="shop-item-row">
+            <div class="shop-item-info">
+              <strong id="shop-hint-row-3-title">شحنة عملات ذهبية مجانية (&#x2066;+100&#x2069; 🪙)</strong>
+              <small id="shop-hint-row-3-desc">شاهد إعلان مكافأة قصيراً لشحن رصيدك بـ 100 عملة ذهبية لفتح القاطرات</small>
+            </div>
+            <button id="btn-shop-ad-coins" class="btn btn-gold btn-sm">
+              <span>🎬 &#x2066;+100&#x2069; 🪙</span>
+            </button>
+          </div>
+          <div class="shop-item-row">
+            <div class="shop-item-info">
+              <strong id="coins-small-title">حفنة عملات ذهبية (&#x2066;+2,500&#x2069; 🪙)</strong>
+              <small id="coins-small-desc">شحن فوري لفتح القاطرات وترقيتها بسرعة</small>
+            </div>
+            <button id="btn-buy-coins-small" class="btn btn-gold btn-sm">
+              <span id="btn-buy-coins-small-label">&#x2066;$0.99&#x2069; / &#x2066;3.99 ر.س&#x2069;</span>
+            </button>
+          </div>
+          <div class="shop-item-row">
+            <div class="shop-item-info">
+              <strong id="coins-mega-title">👑 خزنة الذهب الملكية (&#x2066;+15,000&#x2069; 🪙)</strong>
+              <small id="coins-mega-desc">أفضل قيمة استراتيجية لفتح وترقية أسطول القاطرات</small>
+            </div>
+            <button id="btn-buy-coins-mega" class="btn btn-gold btn-sm">
+              <span id="btn-buy-coins-mega-label">&#x2066;$4.99&#x2069; / &#x2066;19.99 ر.س&#x2069;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Train Skins Section -->
+        <div class="shop-section">
+          <h4 class="shop-section-title">🚄 القاطرات المدرّعة والتوربينية 3D</h4>
+          <div id="shop-skins-list" class="shop-skins-list">
+            <!-- Populated dynamically by js/game.js -->
+          </div>
+        </div>
+
+        <div class="shop-footer-links" style="margin-top: 12px; text-align: center;">
+          <button id="btn-shop-privacy" class="btn btn-secondary btn-sm" style="width: 100%;">
+            <span>🔒</span>
+            <span id="btn-shop-privacy-label">سياسة الخصوصية وحماية البيانات (Privacy Policy)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 6: ACHIEVEMENTS & REWARDS (🏆 12 ACHIEVEMENTS) ==================== -->
+    <div id="modal-achievements" class="modal-backdrop" hidden>
+      <div class="modal-card shop-modal-card achievements-modal-card">
+        <div class="shop-header">
+          <div>
+            <h3 class="modal-title">🏆 سجل الإنجازات والمكافآت</h3>
+            <p class="shop-subtitle">أكمل التحديات الاستراتيجية واستلم العملات الذهبية وشحنات الرادار</p>
+          </div>
+          <button class="modal-close-btn" data-close-modal="modal-achievements">✕</button>
+        </div>
+
+        <div class="ach-summary-banner">
+          <span>🎖️ الإنجازات المكتملة:</span>
+          <strong id="ach-summary-count">0 / 12</strong>
+        </div>
+
+        <div id="achievements-list" class="achievements-list">
+          <!-- Populated dynamically by js/game.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 6B: 7-DAY DAILY LOGIN STREAK REWARDS ==================== -->
+    <div id="modal-daily-login" class="modal-backdrop" hidden>
+      <div class="modal-card daily-login-modal-card">
+        <button class="modal-close-btn" data-close-modal="modal-daily-login">✕</button>
+        <div class="shop-header">
+          <div>
+            <h3 id="daily-login-title" class="modal-title">🎁 مكافآت الدخول اليومي (7 أيام)</h3>
+            <p id="daily-login-subtitle" class="shop-subtitle">ادخل يومياً لاستلام الذهب وشحنات الرادار ومضاعفتها مجاناً!</p>
+          </div>
+        </div>
+
+        <div id="daily-streak-grid" class="daily-streak-grid">
+          <!-- Populated dynamically by js/game.js -->
+        </div>
+
+        <div class="modal-actions-col">
+          <button id="btn-claim-daily-2x" class="btn btn-gold pulse-btn">
+            <span>🎬</span>
+            <span id="btn-claim-daily-2x-label">مضاعفة الهدية &#x2066;×2&#x2069; (إعلان مكافأة)</span>
+          </button>
+          <button id="btn-claim-daily-1x" class="btn btn-primary">
+            <span>🎁</span>
+            <span id="btn-claim-daily-1x-label">استلام المكافأة</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 7: TACTICAL REACTOR CALIBRATION OVERLAY ==================== -->
+    <div id="modal-ad-simulator" class="modal-backdrop ad-sim-backdrop" hidden>
+      <div class="modal-card ad-sim-card">
+        <div class="ad-sim-top">
+          <span id="ad-sim-type-badge" class="ad-sim-badge">⚡ معايرة المفاعل التكتيكي</span>
+          <span id="ad-sim-timer" class="ad-sim-timer">3 ثوانٍ...</span>
+        </div>
+
+        <div class="ad-sim-stage">
+          <div class="ad-sim-train-icon">🚄⚡</div>
+          <h4 id="ad-sim-title">قطار الأحلام 3D</h4>
+          <p id="ad-sim-desc">جاري شحن مفاعل البلازما عالي الجهد...</p>
+          <div class="progress-track">
+            <div id="ad-sim-progress" class="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="ad-sim-footer">
+          <button id="btn-ad-sim-claim" class="btn btn-primary btn-block" disabled>
+            <span>⏳ انتظر انتهاء المعايرة لاستلام المكافأة...</span>
+          </button>
+          <button id="btn-ad-sim-cancel" class="btn btn-ghost btn-sm">إلغاء (بدون مكافأة)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 8: PRIVACY POLICY & DATA SAFETY (GOOGLE PLAY COMPLIANCE) ==================== -->
+    <div id="modal-privacy" class="modal-backdrop" hidden>
+      <div class="modal-card shop-modal-card privacy-modal-card">
+        <div class="shop-header">
+          <div>
+            <h3 id="privacy-modal-title" class="modal-title">🔒 سياسة الخصوصية وحماية البيانات</h3>
+            <p id="privacy-modal-subtitle" class="shop-subtitle">قطار الأحلام 3D • تطوير استوديو ALDHFLY GAMES (com.dreamexpress.puzzletracks)</p>
+          </div>
+          <button class="modal-close-btn" data-close-modal="modal-privacy">✕</button>
+        </div>
+
+        <div class="privacy-body" style="max-height: 55vh; overflow-y: auto; text-align: start; font-size: 0.88rem; line-height: 1.65; padding: 8px 4px;">
+          <div id="privacy-localized-summary" hidden style="margin-bottom: 10px; padding: 8px 10px; border-radius: 10px; background: rgba(15, 23, 42, 0.78); border: 1px solid rgba(56, 189, 248, 0.45);"></div>
+          <div id="privacy-content-ar" dir="rtl">
+            <p><strong>1. التخزين المحلي وعدم جمع البيانات الشخصية (V12.3):</strong> لا تطلب اللعبة إنشاء حساب ولا تجمع أي بيانات شخصية كالاسم أو البريد أو الهاتف أو الصور. يتم حفظ تقدمك محلياً على جهازك فقط (<code>dream_express_save_v123_public</code>).</p>
+            <p><strong>2. الإعلانات (Google AdMob):</strong> تستخدم اللعبة حزمة <strong>Google Mobile Ads SDK</strong> لعرض إعلانات البانر وإعلانات المكافآت الاختيارية، وقد تستخدم معرّف الإعلانات (<code>AD_ID</code>) والموقع التقريبي (عبر IP فقط) لمنع الاحتيال وتقديم إعلانات مناسبة عبر اتصال مشفّر HTTPS. يمكنك إعادة ضبط معرّف الإعلانات من إعدادات جهازك (الإعدادات &gt; Google &gt; الإعلانات).</p>
+            <p><strong>3. المشتريات داخل التطبيق (Google Play Billing v8.0.0):</strong> تتم عمليات شراء واستعادة ترخيص <code>VIP</code> (<code>vip_no_ads_pack</code>) وحزمة انطلاقة القائد (<code>starter_conductor_pack</code>) وحزم العملات الذهبية (<code>coins_pack_small</code> و<code>coins_pack_mega</code>) حصرياً عبر نظام الدفع الرسمي لمتجر Google Play دون اطلاع اللعبة على أي بيانات مالية.</p>
+            <p><strong>4. المطور والناشر والتواصل:</strong> اسم المطور والناشر: <strong>ALDHFLY (ALDHFLY GAMES)</strong> • لأي استفسارات تتعلق بالخصوصية: <code>aldhfly@gmail.com</code></p>
+          </div>
+          <hr style="border-color: rgba(255,255,255,0.12); margin: 12px 0;" />
+          <div id="privacy-content-en" dir="ltr" style="text-align: left;">
+            <p><strong>1. Local Storage &amp; Zero PII Collection (V12.3):</strong> Dream Express 3D does not require registration and does not collect personal data (name, email, phone, or contacts). Game progress is saved strictly locally on your device (<code>dream_express_save_v123_public</code>).</p>
+            <p><strong>2. Advertising (Google AdMob):</strong> This game uses the official Google Mobile Ads SDK, which may access your resettable Android Advertising ID (<code>AD_ID</code>) and approximate IP region over encrypted TLS/HTTPS.</p>
+            <p><strong>3. In-App Purchases (Google Play Billing v8.0.0):</strong> Optional VIP Pass (<code>vip_no_ads_pack</code>), Starter Conductor Pack (<code>starter_conductor_pack</code>), and Gold Coin Pack purchases (<code>coins_pack_small</code>, <code>coins_pack_mega</code>) and restores are processed exclusively by Google Play Billing.</p>
+            <p><strong>4. Developer / Publisher &amp; Contact Us:</strong> Developer &amp; Publisher: <strong>ALDHFLY (ALDHFLY GAMES)</strong> • Official Support Email: <code>aldhfly@gmail.com</code></p>
+          </div>
+        </div>
+
+        <div class="modal-actions-col" style="margin-top: 12px;">
+          <a id="privacy-full-link-anchor" href="privacy_policy.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-block" style="text-align: center; text-decoration: none;">
+            <span id="privacy-full-link-label">📄 عرض وثيقة سياسة الخصوصية الكاملة</span>
+          </a>
+          <button class="btn btn-primary btn-block" data-close-modal="modal-privacy">
+            <span id="privacy-close-btn-label">حسناً، فهمت</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 9: 8-LANGUAGE GLOBAL SELECTOR ==================== -->
+    <div id="modal-language" class="modal-backdrop" hidden>
+      <div class="modal-card lang-modal-card">
+        <button class="modal-close-btn" data-close-modal="modal-language">✕</button>
+        <h3 id="lang-modal-title" class="modal-title">🌍 اللغة / Language</h3>
+        <div id="lang-grid" class="lang-grid">
+          <button class="btn btn-secondary lang-opt-btn" data-lang-code="ar">🇸🇦 العربية</button>
+          <button class="btn btn-secondary lang-opt-btn" data-lang-code="en">🇺🇸 English</button>
+          <button class="btn btn-secondary lang-opt-btn" data-lang-code="ja">🇯🇵 日本語</button>
+          <button class="btn btn-secondary lang-opt-btn" data-lang-code="ko">🇰🇷 한국어</button>
+          <button class="btn btn-secondary lang-opt-btn" data-lang-code="de">🇩🇪 Deutsch</button>
+          <button class="btn btn-secondary lang-opt-btn" data-lang-code="fr">🇫🇷 Français</button>
+          <button class="btn btn-secondary lang-opt-btn" data-lang-code="es">🇪🇸 Español</button>
+          <button class="btn btn-secondary lang-opt-btn" data-lang-code="pt">🇧🇷 Português</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 10: ANDROID BACK BUTTON EXIT CONFIRMATION ==================== -->
+    <div id="modal-exit-confirm" class="modal-backdrop" hidden>
+      <div class="modal-card hint-modal-card" style="max-width: 370px; text-align: center;">
+        <button class="modal-close-btn" data-close-modal="modal-exit-confirm">✕</button>
+        <div style="font-size: 2.4rem; margin-bottom: 6px;">🚄</div>
+        <h3 id="exit-modal-title" class="modal-title">الخروج من اللعبة؟</h3>
+        <p id="exit-modal-desc" style="font-size: 0.92rem; color: #CBD5E1; margin: 8px 0 16px; line-height: 1.55;">
+          هل أنت متأكد من رغبتك في إغلاق قطار الأحلام؟ جميع تقدمك ونجومك محفوظة تلقائياً.
+        </p>
+        <div class="modal-actions-col">
+          <button id="btn-exit-stay" class="btn btn-primary btn-block" data-close-modal="modal-exit-confirm">
+            <span id="btn-exit-stay-label">🚄 البقاء ومواصلة اللعب</span>
+          </button>
+          <button id="btn-exit-confirm" class="btn btn-ghost btn-block">
+            <span id="btn-exit-confirm-label">خروج من اللعبة</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 11: V12.0 DEDICATED AUDIO, GRAPHICS & HAPTICS SETTINGS ==================== -->
+    <div id="modal-settings" class="modal-backdrop" hidden>
+      <div class="modal-card settings-modal-card">
+        <div class="shop-header">
+          <div>
+            <h3 id="settings-modal-title" class="modal-title">⚙️ الإعدادات المتقدمة</h3>
+            <p id="settings-modal-subtitle" class="shop-subtitle">تحكم مستقل بصوت القطار والموسيقى وجودة الرسوميات</p>
+          </div>
+          <button class="modal-close-btn" data-close-modal="modal-settings">✕</button>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-slider-row">
+            <div class="settings-slider-header">
+              <span id="settings-sfx-label">🔊 صوت القطار والمؤثرات</span>
+              <strong id="label-sfx-vol-pct" dir="ltr">100%</strong>
+            </div>
+            <input id="slider-sfx-vol" class="settings-range-slider" type="range" min="0" max="100" step="1" value="100" dir="ltr" />
+          </div>
+
+          <div class="settings-slider-row">
+            <div class="settings-slider-header">
+              <span id="settings-bgm-label">🎵 الموسيقى الخلفية</span>
+              <strong id="label-bgm-vol-pct" dir="ltr">42%</strong>
+            </div>
+            <input id="slider-bgm-vol" class="settings-range-slider" type="range" min="0" max="100" step="1" value="42" dir="ltr" />
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-slider-header" style="margin-bottom: 8px;">
+            <span id="settings-quality-label">🖥️ جودة الرسوميات (3D)</span>
+          </div>
+          <div id="settings-quality-group" class="settings-quality-group">
+            <button id="btn-qual-auto" class="btn btn-secondary btn-sm qual-opt-btn active" type="button" data-qual-mode="AUTO">تلقائي</button>
+            <button id="btn-qual-mid" class="btn btn-secondary btn-sm qual-opt-btn" type="button" data-qual-mode="MID">متوازن</button>
+            <button id="btn-qual-high" class="btn btn-secondary btn-sm qual-opt-btn" type="button" data-qual-mode="HIGH">فائق &#x2066;60FPS&#x2069;</button>
+          </div>
+        </div>
+
+        <div class="settings-section settings-toggles-row">
+          <button id="btn-toggle-haptics" class="btn btn-secondary btn-block settings-toggle-btn" type="button">
+            <span id="settings-haptics-label">📳 اهتزاز اللمس: مفعّل</span>
+          </button>
+          <button id="btn-replay-tutorial" class="btn btn-secondary btn-block settings-toggle-btn" type="button" style="margin-top: 6px;">
+            <span id="settings-replay-tutorial-label">📖 إعادة الجولة الإرشادية</span>
+          </button>
+          <div class="settings-bottom-links">
+            <button id="btn-settings-lang" class="btn btn-secondary btn-sm" type="button">🌍 اللغة / Language</button>
+            <button id="btn-settings-privacy" class="btn btn-secondary btn-sm" type="button">🔒 الخصوصية</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" style="margin-top: 10px;" data-close-modal="modal-settings">
+          <span id="settings-done-label">حفظ وإغلاق ✓</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 12: EARLY-SECTOR DAILY CHALLENGE BRIEFING ==================== -->
+    <div id="modal-daily-challenge-briefing" class="modal-backdrop" hidden>
+      <div class="modal-card hint-modal-card" style="max-width: 390px; text-align: center;">
+        <button class="modal-close-btn" data-close-modal="modal-daily-challenge-briefing">✕</button>
+        <div style="font-size: 2.3rem; margin-bottom: 6px;">🌍🚄</div>
+        <h3 id="daily-briefing-title" class="modal-title">تحدي اليوم العالمي (&#x2066;7×6&#x2069; • قطاران متزامنان)</h3>
+        <p id="daily-briefing-desc" style="font-size: 0.9rem; color: #CBD5E1; margin: 10px 0 16px; line-height: 1.6;">
+          تحدي اليوم يستخدم شبكة متقدمة (&#x2066;7×6&#x2069;) وقد يضم قطارين متزامنين (&#x2066;🚆×2&#x2069;) بإشارات تقاطع ذكية ومكافأة &#x2066;×3&#x2069; ذهب! تقدمك في الحملة الرئيسية سيبقى محفوظاً بأمان.
+        </p>
+        <div class="modal-actions-col">
+          <button id="btn-daily-challenge-confirm" class="btn btn-gold btn-block" type="button">
+            <span id="btn-daily-challenge-confirm-label">🚄 خوض التحدي الآن (&#x2066;×3&#x2069; ذهب)</span>
+          </button>
+          <button id="btn-daily-challenge-cancel" class="btn btn-secondary btn-block" type="button" data-close-modal="modal-daily-challenge-briefing">
+            <span id="btn-daily-challenge-cancel-label">العودة للحملة</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="ui-toast" class="ui-toast" hidden></div>
+  </div>
+
+  <!-- 1. Art Assets -->
+  <script charset="UTF-8" src="assets/svg_portraits.js?v=12.3" onerror="window.__svgPortraitsMissing = true;"></script>
+  <!-- 2. Three.js r128 WebGL Core, Post-Processing & Real 3D Asset Loaders (GLTF, RGBE HDR, Draco, SkeletonUtils) -->
+  <script charset="UTF-8" src="js/three.min.js?v=12.3"></script>
+  <script charset="UTF-8" src="js/three_postprocessing.js?v=12.3"></script>
+  <script charset="UTF-8" src="js/GLTFLoader.js?v=12.3"></script>
+  <script charset="UTF-8" src="js/RGBELoader.js?v=12.3"></script>
+  <script charset="UTF-8" src="js/DRACOLoader.js?v=12.3"></script>
+  <script charset="UTF-8" src="js/KTX2Loader.js?v=12.3"></script>
+  <script charset="UTF-8" src="js/SkeletonUtils.js?v=12.3"></script>
+  <script charset="UTF-8" src="js/BufferGeometryUtils.js?v=12.3"></script>
+  <script charset="UTF-8" src="js/RoomEnvironment.js?v=12.3"></script>
+  <script charset="UTF-8" src="js/gsap.min.js?v=12.3"></script>
+  <!-- 3. V12.3 Master Studio Authentic 9-Tier Locomotive Acoustics & Spatial Foley -->
+  <script charset="UTF-8" src="js/audio.js?v=12.3"></script>
+  <!-- 4. 100 Offline-Compiled Multi-Solution Full-Map Labyrinth Levels & 10 Sectors Campaign -->
+  <script charset="UTF-8" src="js/levels.js?v=12.3"></script>
+  <!-- 5. V12.3 Master 3D Engine (100% Compiled .GLB Pipeline, Dual-Train & 14 Obstacle Props, 60 FPS) -->
+  <script charset="UTF-8" src="js/engine3d.js?v=12.3"></script>
+  <!-- 6. Core Game Engine & Full 8-Language Localized Glassmorphic UI Controller -->
+  <script charset="UTF-8" src="js/game.js?v=12.3"></script>
+  <script charset="UTF-8" src="demo_gate.js?v=12.4"></script>
+</body>
+</html>
