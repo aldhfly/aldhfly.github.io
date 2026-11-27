@@ -298,6 +298,7 @@
 
   window.__shouldKeepEngine3DPaused = function () {
     if (isNativeAdActive) return true;
+    if (typeof document !== 'undefined' && document.querySelector('dialog[open]')) return true;
     const simEl = document.getElementById('modal-ad-simulator');
     if (simEl && !simEl.hidden) return true;
     return FULLSCREEN_PAUSE_MODAL_IDS.some(id => {
@@ -323,6 +324,8 @@
       window.TrainEngine3D.resumeRendering();
     }
   }
+
+  window.syncEngine3DPauseState = syncEngine3DPauseState;
 
   function stopShopLocomotivePreviewUi() {
     if (shopPreviewUiTimer) {
@@ -8974,6 +8977,7 @@
       const openDialog = document.querySelector('dialog[open]');
       if (openDialog && typeof openDialog.close === 'function') {
         openDialog.close();
+        syncEngine3DPauseState();
         return 'HANDLED';
       }
       const simModal = document.getElementById('modal-ad-simulator');

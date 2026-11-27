@@ -10,6 +10,36 @@
     return m ? parseInt(m[0], 10) : 0;
   }
 
+  function isElementVisibleForFocus(el) {
+    if (!el || el === document.body || !document.contains(el)) return false;
+    if (el.closest && el.closest('[hidden]')) return false;
+    if (typeof el.getClientRects === 'function' && el.getClientRects().length === 0) return false;
+    try {
+      var cs = window.getComputedStyle(el);
+      if (cs && (cs.display === 'none' || cs.visibility === 'hidden')) return false;
+    } catch (_) {}
+    return true;
+  }
+
+  function cleanupClosedModal(dlg) {
+    if (!dlg || dlg.open) return;
+    dlg.returnValue = '';
+    var prev = dlg._prevFocus;
+    dlg._prevFocus = null;
+    var active = document.activeElement;
+    if (active && dlg.contains(active)) {
+      if (isElementVisibleForFocus(prev) && typeof prev.focus === 'function') {
+        try { prev.focus({ preventScroll: true }); } catch (_) {}
+      }
+      if (document.activeElement && dlg.contains(document.activeElement) && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
+      }
+    }
+    if (typeof window.syncEngine3DPauseState === 'function') {
+      window.syncEngine3DPauseState();
+    }
+  }
+
   function ensureModal() {
     var existing = document.getElementById('itch-gp-modal');
     if (existing) return existing;
@@ -36,21 +66,38 @@
         '</form>' +
       '</div>';
 
-    dlg.addEventListener('close', function () {
-      dlg.style.display = '';
-      dlg.returnValue = '';
-      var prev = dlg._prevFocus;
-      dlg._prevFocus = null;
-      var active = document.activeElement;
-      if (active && dlg.contains(active)) {
-        if (prev && prev !== document.body && document.contains(prev) && !prev.closest('[hidden]') && typeof prev.focus === 'function') {
-          try { prev.focus({ preventScroll: true }); } catch (_) {}
-        }
-        if (document.activeElement && dlg.contains(document.activeElement) && typeof document.activeElement.blur === 'function') {
-          document.activeElement.blur();
-        }
-      }
+    var openObs = new MutationObserver(function () {
+      if (!dlg.open) cleanupClosedModal(dlg);
     });
+    openObs.observe(dlg, { attributes: true, attributeFilter: ['open'] });
+
+    dlg.addEventListener('close', function () {
+      cleanupClosedModal(dlg);
+    });
+
+    dlg.addEventListener('cancel', function () {
+      queueMicrotask(function () {
+        cleanupClosedModal(dlg);
+      });
+    });
+
+    var closeForm = dlg.querySelector('.demo-gp-close-form');
+    if (closeForm) {
+      closeForm.addEventListener('submit', function () {
+        queueMicrotask(function () {
+          cleanupClosedModal(dlg);
+        });
+      });
+    }
+
+    var closeBtn = dlg.querySelector('.demo-gp-close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        queueMicrotask(function () {
+          cleanupClosedModal(dlg);
+        });
+      });
+    }
 
     if (!('closedBy' in HTMLDialogElement.prototype)) {
       var outside = function (e) {
@@ -62,7 +109,12 @@
         pressedOutside = outside(e);
       });
       dlg.addEventListener('pointerup', function (e) {
-        if (pressedOutside && outside(e) && dlg.open) dlg.close();
+        if (pressedOutside && outside(e) && dlg.open) {
+          dlg.close();
+          queueMicrotask(function () {
+            cleanupClosedModal(dlg);
+          });
+        }
       });
     }
 
@@ -84,13 +136,15 @@
         titleEl.textContent = 'أكملت النسخة التجريبية! | 3-Level Demo Complete!';
       }
     }
-    dlg.style.display = 'flex';
     if (!dlg.open && typeof dlg.showModal === 'function') {
       try {
         dlg.showModal();
       } catch (_) {
         dlg.setAttribute('open', '');
       }
+    }
+    if (typeof window.syncEngine3DPauseState === 'function') {
+      window.syncEngine3DPauseState();
     }
   }
 
